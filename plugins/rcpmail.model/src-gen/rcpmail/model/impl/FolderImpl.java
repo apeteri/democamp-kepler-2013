@@ -4,12 +4,14 @@ package rcpmail.model.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.internal.cdo.CDOObjectImpl;
 
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
 import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
+import rcpmail.model.util.FolderAdapter;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,11 +34,12 @@ public class FolderImpl extends CDOObjectImpl implements Folder
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
+   * @generated NOT
    */
   protected FolderImpl()
   {
     super();
+    eAdapters().add(new FolderAdapter());
   }
 
   /**
@@ -112,6 +115,17 @@ public class FolderImpl extends CDOObjectImpl implements Folder
     return (EList<Message>)eGet(ModelPackage.Literals.FOLDER__MESSAGES, true);
   }
 
+  /**
+   * @generated NOT
+   */
+  @Override
+  public Object eGet(EStructuralFeature eFeature, boolean resolve) {
+    if (ModelPackage.Literals.FOLDER__MESSAGE_COUNT == eFeature) {
+    	return getMessageCount();
+    }
+    return super.eGet(eFeature, resolve);
+  }
+  
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

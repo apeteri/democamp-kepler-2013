@@ -34,7 +34,8 @@ public final class FolderAdapter extends AdapterImpl {
 					eObject, 
 					Notification.SET,
 					ModelPackage.Literals.FOLDER__MESSAGE_COUNT);
-			getTarget().eNotify(impl);
+			
+			impl.dispatch();
 		} else {
 			super.notifyChanged(msg);
 		}
