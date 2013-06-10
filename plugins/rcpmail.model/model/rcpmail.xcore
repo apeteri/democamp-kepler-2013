@@ -26,10 +26,17 @@ class Folder
 	
 	container Server server opposite folders
 	
-	contains Message[] messages	
+	contains Message[] messages	opposite folder
 }
 
 class Message
 {
+	int ^id
+	String subject
+	String from
+	String date
+	boolean isSpam
+	String body
 	
+	container Folder folder opposite messages
 }

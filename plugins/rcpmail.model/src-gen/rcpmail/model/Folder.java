@@ -3,6 +3,7 @@
 package rcpmail.model;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -82,6 +83,7 @@ public interface Folder extends EObject
   /**
    * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
    * The list contents are of type {@link rcpmail.model.Message}.
+   * It is bidirectional and its opposite is '{@link rcpmail.model.Message#getFolder <em>Folder</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Messages</em>' containment reference list isn't clear,
@@ -90,7 +92,8 @@ public interface Folder extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Messages</em>' containment reference list.
    * @see rcpmail.model.ModelPackage#getFolder_Messages()
-   * @model containment="true"
+   * @see rcpmail.model.Message#getFolder
+   * @model opposite="folder" containment="true"
    * @generated
    */
   EList<Message> getMessages();

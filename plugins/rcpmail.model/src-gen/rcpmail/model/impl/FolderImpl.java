@@ -3,19 +3,22 @@
 package rcpmail.model.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
 import rcpmail.model.ModelPackage;
@@ -166,7 +169,7 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
   {
     if (messages == null)
     {
-      messages = new EObjectContainmentEList<Message>(Message.class, this, ModelPackage.FOLDER__MESSAGES);
+      messages = new EObjectContainmentWithInverseEList<Message>(Message.class, this, ModelPackage.FOLDER__MESSAGES, ModelPackage.MESSAGE__FOLDER);
     }
     return messages;
   }
@@ -176,6 +179,7 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -185,6 +189,8 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
         if (eInternalContainer() != null)
           msgs = eBasicRemoveFromContainer(msgs);
         return basicSetServer((Server)otherEnd, msgs);
+      case ModelPackage.FOLDER__MESSAGES:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getMessages()).basicAdd(otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }

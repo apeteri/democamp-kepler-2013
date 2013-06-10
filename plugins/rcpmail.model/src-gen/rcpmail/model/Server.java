@@ -152,24 +152,20 @@ public interface Server extends EObject
 
   /**
    * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Junk Folder</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @model kind="operation" unique="false"
-   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%rcpmail.model.Server%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%rcpmail.model.Folder%>> _folders = _this.getFolders();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>>()\n{\n\t\tpublic <%java.lang.Boolean%> apply(final <%rcpmail.model.Folder%> f)\n\t\t{\n\t\t\t<%java.lang.String%> _name = f.getName();\n\t\t\tboolean _equals = <%com.google.common.base.Objects%>.equal(_name, \"Junk\");\n\t\t\treturn <%java.lang.Boolean%>.valueOf(_equals);\n\t\t}\n\t};\n<%rcpmail.model.Folder%> _findFirst = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%rcpmail.model.Folder%>>findFirst(_folders, _function);\nreturn _findFirst;'"
-   * @generated
-   */
-  Folder getJunkFolder();
-
-  /**
-   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @model kind="operation" unique="false"
    *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%rcpmail.model.Server%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%rcpmail.model.Folder%>> _folders = _this.getFolders();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>>()\n{\n\t\tpublic <%java.lang.Boolean%> apply(final <%rcpmail.model.Folder%> f)\n\t\t{\n\t\t\t<%java.lang.String%> _name = f.getName();\n\t\t\tboolean _equals = <%com.google.common.base.Objects%>.equal(_name, \"Inbox\");\n\t\t\treturn <%java.lang.Boolean%>.valueOf(_equals);\n\t\t}\n\t};\n<%rcpmail.model.Folder%> _findFirst = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%rcpmail.model.Folder%>>findFirst(_folders, _function);\nreturn _findFirst;'"
    * @generated
    */
   Folder getDefaultSelection();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" unique="false"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel body='<%rcpmail.model.Server%> _this = this;\n<%org.eclipse.emf.common.util.EList%><<%rcpmail.model.Folder%>> _folders = _this.getFolders();\nfinal <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>> _function = new <%org.eclipse.xtext.xbase.lib.Functions.Function1%><<%rcpmail.model.Folder%>,<%java.lang.Boolean%>>()\n{\n\t\tpublic <%java.lang.Boolean%> apply(final <%rcpmail.model.Folder%> f)\n\t\t{\n\t\t\t<%java.lang.String%> _name = f.getName();\n\t\t\tboolean _equals = <%com.google.common.base.Objects%>.equal(_name, \"Junk\");\n\t\t\treturn <%java.lang.Boolean%>.valueOf(_equals);\n\t\t}\n\t};\n<%rcpmail.model.Folder%> _findFirst = <%org.eclipse.xtext.xbase.lib.IterableExtensions%>.<<%rcpmail.model.Folder%>>findFirst(_folders, _function);\nreturn _findFirst;'"
+   * @generated
+   */
+  Folder getJunkFolder();
 
 } // Server

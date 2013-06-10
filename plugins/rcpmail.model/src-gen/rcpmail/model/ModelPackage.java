@@ -205,7 +205,6 @@ public interface ModelPackage extends EPackage
    */
   int FOLDER_OPERATION_COUNT = 0;
 
-
   /**
    * The meta object id for the '{@link rcpmail.model.impl.MessageImpl <em>Message</em>}' class.
    * <!-- begin-user-doc -->
@@ -217,13 +216,76 @@ public interface ModelPackage extends EPackage
   int MESSAGE = 2;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__ID = 0;
+
+  /**
+   * The feature id for the '<em><b>Subject</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__SUBJECT = 1;
+
+  /**
+   * The feature id for the '<em><b>From</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__FROM = 2;
+
+  /**
+   * The feature id for the '<em><b>Date</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__DATE = 3;
+
+  /**
+   * The feature id for the '<em><b>Is Spam</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__IS_SPAM = 4;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__BODY = 5;
+
+  /**
+   * The feature id for the '<em><b>Folder</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE__FOLDER = 6;
+
+  /**
    * The number of structural features of the '<em>Message</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MESSAGE_FEATURE_COUNT = 0;
+  int MESSAGE_FEATURE_COUNT = 7;
 
   /**
    * The number of operations of the '<em>Message</em>' class.
@@ -374,6 +436,83 @@ public interface ModelPackage extends EPackage
   EClass getMessage();
 
   /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see rcpmail.model.Message#getId()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_Id();
+
+  /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#getSubject <em>Subject</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Subject</em>'.
+   * @see rcpmail.model.Message#getSubject()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_Subject();
+
+  /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#getFrom <em>From</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>From</em>'.
+   * @see rcpmail.model.Message#getFrom()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_From();
+
+  /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#getDate <em>Date</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Date</em>'.
+   * @see rcpmail.model.Message#getDate()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_Date();
+
+  /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#isIsSpam <em>Is Spam</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Spam</em>'.
+   * @see rcpmail.model.Message#isIsSpam()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_IsSpam();
+
+  /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Body</em>'.
+   * @see rcpmail.model.Message#getBody()
+   * @see #getMessage()
+   * @generated
+   */
+  EAttribute getMessage_Body();
+
+  /**
+   * Returns the meta object for the container reference '{@link rcpmail.model.Message#getFolder <em>Folder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Folder</em>'.
+   * @see rcpmail.model.Message#getFolder()
+   * @see #getMessage()
+   * @generated
+   */
+  EReference getMessage_Folder();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -506,6 +645,62 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EClass MESSAGE = eINSTANCE.getMessage();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__ID = eINSTANCE.getMessage_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Subject</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__SUBJECT = eINSTANCE.getMessage_Subject();
+
+    /**
+     * The meta object literal for the '<em><b>From</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__FROM = eINSTANCE.getMessage_From();
+
+    /**
+     * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__DATE = eINSTANCE.getMessage_Date();
+
+    /**
+     * The meta object literal for the '<em><b>Is Spam</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__IS_SPAM = eINSTANCE.getMessage_IsSpam();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MESSAGE__BODY = eINSTANCE.getMessage_Body();
+
+    /**
+     * The meta object literal for the '<em><b>Folder</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MESSAGE__FOLDER = eINSTANCE.getMessage_Folder();
 
   }
 

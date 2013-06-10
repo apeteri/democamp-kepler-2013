@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -272,6 +271,28 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
    * <!-- end-user-doc -->
    * @generated
    */
+  public Folder getDefaultSelection()
+  {
+    Server _this = this;
+    EList<Folder> _folders = _this.getFolders();
+    final Function1<Folder,Boolean> _function = new Function1<Folder,Boolean>()
+    {
+        public Boolean apply(final Folder f)
+        {
+          String _name = f.getName();
+          boolean _equals = Objects.equal(_name, "Inbox");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Folder _findFirst = IterableExtensions.<Folder>findFirst(_folders, _function);
+    return _findFirst;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Folder getJunkFolder()
   {
     Server _this = this;
@@ -304,28 +325,6 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
         return ((InternalEList<InternalEObject>)(InternalEList<?>)getFolders()).basicAdd(otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Folder getDefaultSelection()
-  {
-    Server _this = this;
-    EList<Folder> _folders = _this.getFolders();
-    final Function1<Folder,Boolean> _function = new Function1<Folder,Boolean>()
-    {
-        public Boolean apply(final Folder f)
-        {
-          String _name = f.getName();
-          boolean _equals = Objects.equal(_name, "Inbox");
-          return Boolean.valueOf(_equals);
-        }
-      };
-    Folder _findFirst = IterableExtensions.<Folder>findFirst(_folders, _function);
-    return _findFirst;
   }
 
   /**
