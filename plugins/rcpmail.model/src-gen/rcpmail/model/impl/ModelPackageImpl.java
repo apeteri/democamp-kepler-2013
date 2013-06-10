@@ -287,7 +287,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMessage_IsSpam()
+  public EAttribute getMessage_Spam()
   {
     return (EAttribute)messageEClass.getEStructuralFeatures().get(4);
   }
@@ -361,7 +361,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEAttribute(messageEClass, MESSAGE__SUBJECT);
     createEAttribute(messageEClass, MESSAGE__FROM);
     createEAttribute(messageEClass, MESSAGE__DATE);
-    createEAttribute(messageEClass, MESSAGE__IS_SPAM);
+    createEAttribute(messageEClass, MESSAGE__SPAM);
     createEAttribute(messageEClass, MESSAGE__BODY);
     createEReference(messageEClass, MESSAGE__FOLDER);
   }
@@ -421,7 +421,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEAttribute(getMessage_Subject(), theEcorePackage.getEString(), "subject", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMessage_From(), theEcorePackage.getEString(), "from", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMessage_Date(), theEcorePackage.getEString(), "date", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMessage_IsSpam(), theEcorePackage.getEBoolean(), "isSpam", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMessage_Spam(), theEcorePackage.getEBoolean(), "spam", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMessage_Body(), theEcorePackage.getEString(), "body", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMessage_Folder(), this.getFolder(), this.getFolder_Messages(), "folder", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

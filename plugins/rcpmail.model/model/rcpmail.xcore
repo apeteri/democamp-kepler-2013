@@ -36,7 +36,7 @@ class Message
 	String subject
 	String from
 	String date
-	boolean isSpam
+	boolean spam
 	String body
 	
 	container Folder folder opposite messages

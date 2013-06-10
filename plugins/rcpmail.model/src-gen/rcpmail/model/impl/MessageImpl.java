@@ -28,7 +28,7 @@ import rcpmail.model.ModelPackage;
  *   <li>{@link rcpmail.model.impl.MessageImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link rcpmail.model.impl.MessageImpl#getFrom <em>From</em>}</li>
  *   <li>{@link rcpmail.model.impl.MessageImpl#getDate <em>Date</em>}</li>
- *   <li>{@link rcpmail.model.impl.MessageImpl#isIsSpam <em>Is Spam</em>}</li>
+ *   <li>{@link rcpmail.model.impl.MessageImpl#isSpam <em>Spam</em>}</li>
  *   <li>{@link rcpmail.model.impl.MessageImpl#getBody <em>Body</em>}</li>
  *   <li>{@link rcpmail.model.impl.MessageImpl#getFolder <em>Folder</em>}</li>
  * </ul>
@@ -119,24 +119,24 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
   protected String date = DATE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isIsSpam() <em>Is Spam</em>}' attribute.
+   * The default value of the '{@link #isSpam() <em>Spam</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsSpam()
+   * @see #isSpam()
    * @generated
    * @ordered
    */
-  protected static final boolean IS_SPAM_EDEFAULT = false;
+  protected static final boolean SPAM_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isIsSpam() <em>Is Spam</em>}' attribute.
+   * The cached value of the '{@link #isSpam() <em>Spam</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsSpam()
+   * @see #isSpam()
    * @generated
    * @ordered
    */
-  protected boolean isSpam = IS_SPAM_EDEFAULT;
+  protected boolean spam = SPAM_EDEFAULT;
 
   /**
    * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
@@ -276,9 +276,9 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isIsSpam()
+  public boolean isSpam()
   {
-    return isSpam;
+    return spam;
   }
 
   /**
@@ -286,12 +286,12 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIsSpam(boolean newIsSpam)
+  public void setSpam(boolean newSpam)
   {
-    boolean oldIsSpam = isSpam;
-    isSpam = newIsSpam;
+    boolean oldSpam = spam;
+    spam = newSpam;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MESSAGE__IS_SPAM, oldIsSpam, isSpam));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.MESSAGE__SPAM, oldSpam, spam));
   }
 
   /**
@@ -430,8 +430,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         return getFrom();
       case ModelPackage.MESSAGE__DATE:
         return getDate();
-      case ModelPackage.MESSAGE__IS_SPAM:
-        return isIsSpam();
+      case ModelPackage.MESSAGE__SPAM:
+        return isSpam();
       case ModelPackage.MESSAGE__BODY:
         return getBody();
       case ModelPackage.MESSAGE__FOLDER:
@@ -462,8 +462,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
       case ModelPackage.MESSAGE__DATE:
         setDate((String)newValue);
         return;
-      case ModelPackage.MESSAGE__IS_SPAM:
-        setIsSpam((Boolean)newValue);
+      case ModelPackage.MESSAGE__SPAM:
+        setSpam((Boolean)newValue);
         return;
       case ModelPackage.MESSAGE__BODY:
         setBody((String)newValue);
@@ -497,8 +497,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
       case ModelPackage.MESSAGE__DATE:
         setDate(DATE_EDEFAULT);
         return;
-      case ModelPackage.MESSAGE__IS_SPAM:
-        setIsSpam(IS_SPAM_EDEFAULT);
+      case ModelPackage.MESSAGE__SPAM:
+        setSpam(SPAM_EDEFAULT);
         return;
       case ModelPackage.MESSAGE__BODY:
         setBody(BODY_EDEFAULT);
@@ -528,8 +528,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
         return FROM_EDEFAULT == null ? from != null : !FROM_EDEFAULT.equals(from);
       case ModelPackage.MESSAGE__DATE:
         return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
-      case ModelPackage.MESSAGE__IS_SPAM:
-        return isSpam != IS_SPAM_EDEFAULT;
+      case ModelPackage.MESSAGE__SPAM:
+        return spam != SPAM_EDEFAULT;
       case ModelPackage.MESSAGE__BODY:
         return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
       case ModelPackage.MESSAGE__FOLDER:
@@ -557,8 +557,8 @@ public class MessageImpl extends MinimalEObjectImpl.Container implements Message
     result.append(from);
     result.append(", date: ");
     result.append(date);
-    result.append(", isSpam: ");
-    result.append(isSpam);
+    result.append(", spam: ");
+    result.append(spam);
     result.append(", body: ");
     result.append(body);
     result.append(')');

@@ -39,9 +39,9 @@ public class MailContentProvider extends ObservableListTreeContentProvider {
 				if (element instanceof Folder) {
 					return ((Folder) element).getServer();
 				}
-				if (element instanceof Server) {
-					return ((Server) element).getModel();
-				}
+//				if (element instanceof Server) {
+//					return ((Server) element).getModel();
+//				}
 				return super.getParent(element);
 			}
 		};

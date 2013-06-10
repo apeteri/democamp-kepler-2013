@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link rcpmail.model.Message#getSubject <em>Subject</em>}</li>
  *   <li>{@link rcpmail.model.Message#getFrom <em>From</em>}</li>
  *   <li>{@link rcpmail.model.Message#getDate <em>Date</em>}</li>
- *   <li>{@link rcpmail.model.Message#isIsSpam <em>Is Spam</em>}</li>
+ *   <li>{@link rcpmail.model.Message#isSpam <em>Spam</em>}</li>
  *   <li>{@link rcpmail.model.Message#getBody <em>Body</em>}</li>
  *   <li>{@link rcpmail.model.Message#getFolder <em>Folder</em>}</li>
  * </ul>
@@ -133,30 +133,30 @@ public interface Message extends EObject
   void setDate(String value);
 
   /**
-   * Returns the value of the '<em><b>Is Spam</b></em>' attribute.
+   * Returns the value of the '<em><b>Spam</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Is Spam</em>' attribute isn't clear,
+   * If the meaning of the '<em>Spam</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Spam</em>' attribute.
-   * @see #setIsSpam(boolean)
-   * @see rcpmail.model.ModelPackage#getMessage_IsSpam()
+   * @return the value of the '<em>Spam</em>' attribute.
+   * @see #setSpam(boolean)
+   * @see rcpmail.model.ModelPackage#getMessage_Spam()
    * @model unique="false"
    * @generated
    */
-  boolean isIsSpam();
+  boolean isSpam();
 
   /**
-   * Sets the value of the '{@link rcpmail.model.Message#isIsSpam <em>Is Spam</em>}' attribute.
+   * Sets the value of the '{@link rcpmail.model.Message#isSpam <em>Spam</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Spam</em>' attribute.
-   * @see #isIsSpam()
+   * @param value the new value of the '<em>Spam</em>' attribute.
+   * @see #isSpam()
    * @generated
    */
-  void setIsSpam(boolean value);
+  void setSpam(boolean value);
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' attribute.

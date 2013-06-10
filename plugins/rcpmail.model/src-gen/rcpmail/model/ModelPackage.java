@@ -252,13 +252,13 @@ public interface ModelPackage extends EPackage
   int MESSAGE__DATE = 3;
 
   /**
-   * The feature id for the '<em><b>Is Spam</b></em>' attribute.
+   * The feature id for the '<em><b>Spam</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MESSAGE__IS_SPAM = 4;
+  int MESSAGE__SPAM = 4;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' attribute.
@@ -480,15 +480,15 @@ public interface ModelPackage extends EPackage
   EAttribute getMessage_Date();
 
   /**
-   * Returns the meta object for the attribute '{@link rcpmail.model.Message#isIsSpam <em>Is Spam</em>}'.
+   * Returns the meta object for the attribute '{@link rcpmail.model.Message#isSpam <em>Spam</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Spam</em>'.
-   * @see rcpmail.model.Message#isIsSpam()
+   * @return the meta object for the attribute '<em>Spam</em>'.
+   * @see rcpmail.model.Message#isSpam()
    * @see #getMessage()
    * @generated
    */
-  EAttribute getMessage_IsSpam();
+  EAttribute getMessage_Spam();
 
   /**
    * Returns the meta object for the attribute '{@link rcpmail.model.Message#getBody <em>Body</em>}'.
@@ -679,12 +679,12 @@ public interface ModelPackage extends EPackage
     EAttribute MESSAGE__DATE = eINSTANCE.getMessage_Date();
 
     /**
-     * The meta object literal for the '<em><b>Is Spam</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Spam</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MESSAGE__IS_SPAM = eINSTANCE.getMessage_IsSpam();
+    EAttribute MESSAGE__SPAM = eINSTANCE.getMessage_Spam();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' attribute feature.

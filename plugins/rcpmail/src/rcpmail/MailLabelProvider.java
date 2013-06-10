@@ -56,7 +56,7 @@ final class MailLabelProvider extends ObservableMapLabelProvider {
 		}
 		if (element instanceof Folder) {
 			Folder folder = (Folder) element;
-			return folder.getName() + " (" + folder.getMessages().length + ")";
+			return folder.getName() + " (" + folder.getMessages().size() + ")";
 		}
 		return null;
 	}
