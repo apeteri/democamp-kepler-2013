@@ -7,6 +7,7 @@ import org.eclipse.core.commands.IHandler;
 
 import rcpmail.MessageView;
 import rcpmail.model.Message;
+import rcpmail.model.ModelManager;
 
 public class MarkViewAsSpamAndMoveHandler extends AbstractHandler implements
 		IHandler {
@@ -19,7 +20,7 @@ public class MarkViewAsSpamAndMoveHandler extends AbstractHandler implements
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		Message msg = messageView.getMessage();
 		if (msg != null) {
-			rcpmail.handlers.MarkAsSpamAndMoveHandler.markAndMoveMessage(msg);
+			ModelManager.INSTANCE.markAndMoveMessage(msg);
 		}
 		return null;
 	}

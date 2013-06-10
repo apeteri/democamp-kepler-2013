@@ -5,6 +5,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
 import rcpmail.MessageView;
+import rcpmail.model.ModelManager;
 
 public class DeleteViewMessageHandler extends AbstractHandler {
 
@@ -16,8 +17,7 @@ public class DeleteViewMessageHandler extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		if (messageView.getMessage() != null) {
-			rcpmail.handlers.DeleteMessageHandler.trashMessage(messageView
-					.getMessage());
+			ModelManager.INSTANCE.trashMessage(messageView.getMessage());
 		}
 		return null;
 	}

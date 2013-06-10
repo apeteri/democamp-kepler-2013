@@ -1,7 +1,5 @@
 package rcpmail.handlers;
 
-import java.util.List;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -9,8 +7,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import rcpmail.model.Folder;
 import rcpmail.model.Message;
+import rcpmail.model.ModelManager;
 
 public class DeleteMessageHandler extends AbstractHandler {
 
@@ -20,30 +18,9 @@ public class DeleteMessageHandler extends AbstractHandler {
 			IStructuredSelection selection = (IStructuredSelection) sel;
 			if (selection.getFirstElement() instanceof Message) {
 				Message msg = (Message) selection.getFirstElement();
-				trashMessage(msg);
+				ModelManager.INSTANCE.trashMessage(msg);
 			}
 		}
 		return null;
 	}
-
-	static void trashMessage(Message msg) {
-		Folder trash = getTrash(msg.getFolder().getServer().getFolders());
-		Folder current = msg.getFolder();
-		if (trash != current) {
-			// This will remove the message from its original container
-			trash.getMessages().add(msg);
-		} else {
-			trash.getMessages().remove(msg);
-		}
-	}
-
-	private static Folder getTrash(List<Folder> folders) {
-		for (Folder folder : folders) {
-			if ("Trash".equals(folder.getName())) {
-				return folder;
-			}
-		}
-		return null;
-	}
-
 }

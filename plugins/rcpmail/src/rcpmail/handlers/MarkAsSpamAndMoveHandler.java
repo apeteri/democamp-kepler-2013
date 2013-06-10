@@ -10,23 +10,13 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-import rcpmail.model.Folder;
 import rcpmail.model.Message;
+import rcpmail.model.ModelManager;
 
 public class MarkAsSpamAndMoveHandler extends AbstractHandler implements
 		IHandler {
 	
 	public static final String MARK_AS_SPAM_COMMAND_ID = "rcpmail.markAsSpamAndMove";
-
-	
-	static void markAndMoveMessage(Message msg) {
-		msg.setSpam(true);
-		Folder junk = msg.getFolder().getServer().getJunkFolder();
-		Folder current = msg.getFolder();
-		if (current != junk) {
-			junk.getMessages().add(msg);
-		}
-	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection sel = HandlerUtil.getCurrentSelection(event);
@@ -35,10 +25,9 @@ public class MarkAsSpamAndMoveHandler extends AbstractHandler implements
 			Iterator<?> i = selection.iterator();
 			while (i.hasNext()) {
 				Message msg = (Message) i.next();
-				markAndMoveMessage(msg);
+				ModelManager.INSTANCE.markAndMoveMessage(msg);
 			}
 		}
 		return null;
 	}
-
 }
