@@ -15,7 +15,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="rcpmail-99.application"
+            application="rcpmail.application"
             name="RCP Mail 2.0">
          <property
                name="aboutText"
