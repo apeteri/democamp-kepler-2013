@@ -1,3 +1,4 @@
+@GenModel(bundleManifest="false")
 package rcpmail.model
 
 class Server
