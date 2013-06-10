@@ -24,17 +24,15 @@ public class MarkAsSpamAndMoveHandler extends AbstractHandler implements
 		Folder junk = msg.getFolder().getServer().getJunkFolder();
 		Folder current = msg.getFolder();
 		if (current != junk) {
-			current.removeMessage(msg);
-			junk.addMessage(msg);
+			junk.getMessages().add(msg);
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection sel = HandlerUtil.getCurrentSelection(event);
 		if (sel instanceof IStructuredSelection) {
 			IStructuredSelection selection = (IStructuredSelection) sel;
-			Iterator i = selection.iterator();
+			Iterator<?> i = selection.iterator();
 			while (i.hasNext()) {
 				Message msg = (Message) i.next();
 				markAndMoveMessage(msg);

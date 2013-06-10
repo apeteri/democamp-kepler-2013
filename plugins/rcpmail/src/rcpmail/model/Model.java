@@ -1,14 +1,14 @@
 package rcpmail.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.eclipse.core.databinding.observable.list.ObservableList;
+import org.eclipse.core.databinding.observable.list.WritableList;
 
-public class Model extends ModelObject {
+public class Model {
 	private static Model model;
-	private List<Server> servers = new ArrayList<Server>();
+	private ObservableList/*<Server>*/ servers = WritableList.withElementType(Server.class);
 
 	public Model() {
-		Server server = new Server();
+		Server server = ModelFactory.eINSTANCE.createServer();
 		server.setHostname("My Mail Server");
 		server.setPort(23);
 		server.setUsername("test");
@@ -17,20 +17,18 @@ public class Model extends ModelObject {
 	
 	public void addServer(final Server server) {
 		servers.add(server);
-		firePropertyChange("servers", null, null);
 	}
 
 	public void removeServer(Server child) {
 		servers.remove(child);
-		firePropertyChange("servers", null, null);
 	}
 
-	public List<Server> getServers() {
+	public ObservableList/*<Server>*/ getServers() {
 		return servers;
 	}
 	
 	public Object getDefaultSelection() {
-		return servers.size() > 0 ? servers.get(0).getDefaultSelection() : null;
+		return servers.size() > 0 ? ((Server) servers.get(0)).getDefaultSelection() : null;
 	}
 
 	public static Model getInstance() {

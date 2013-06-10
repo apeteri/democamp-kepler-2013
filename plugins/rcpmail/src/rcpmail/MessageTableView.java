@@ -5,6 +5,7 @@ import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.masterdetail.MasterDetailObservables;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -180,9 +181,9 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 			if (element instanceof Folder) {
 				Folder folder = (Folder) element;
 				selectedFolder.setValue(folder);
-				Message[] messages = folder.getMessages();
-				if (messages.length > 0) {
-					tableViewer.setSelection(new StructuredSelection(messages[0]));
+				EList<Message> messages = folder.getMessages();
+				if (messages.size() > 0) {
+					tableViewer.setSelection(new StructuredSelection(messages.get(0)));
 				}
 			}
 		}

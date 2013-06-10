@@ -41,11 +41,14 @@ public class SyncWithServerHandler extends AbstractHandler implements IHandler {
 							// happen. (In the current code, there is no deadlock
 							// potential because this job does not hold any locks,
 							// but that may change in the future.)
-							Display.getDefault().asyncExec(new Runnable() {
-								public void run() {
-									folder.addMessage(Message.createExample(-1));
-								}
-							});
+							
+							// TODO: add functionality for demo here
+
+//							Display.getDefault().asyncExec(new Runnable() {
+//								public void run() {
+//									folder.addMessage(Message.createExample(-1));
+//								}
+//							});
 							monitor.worked(1);
 						}
 						monitor.done();

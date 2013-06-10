@@ -30,10 +30,10 @@ public class DeleteMessageHandler extends AbstractHandler {
 		Folder trash = getTrash(msg.getFolder().getServer().getFolders());
 		Folder current = msg.getFolder();
 		if (trash != current) {
-			current.removeMessage(msg);
-			trash.addMessage(msg);
+			// This will remove the message from its original container
+			trash.getMessages().add(msg);
 		} else {
-			trash.removeMessage(msg);
+			trash.getMessages().remove(msg);
 		}
 	}
 
