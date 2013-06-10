@@ -8,7 +8,7 @@ import org.eclipse.jface.databinding.viewers.ObservableListTreeContentProvider;
 import org.eclipse.jface.databinding.viewers.TreeStructureAdvisor;
 
 import rcpmail.model.Folder;
-import rcpmail.model.Model;
+import rcpmail.model.ModelManager;
 import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
 
@@ -22,10 +22,10 @@ public class MailContentProvider extends ObservableListTreeContentProvider {
 	private static IObservableFactory getObservableListFactory() {
 		return new IObservableFactory() {
 			public IObservable createObservable(Object parent) {
-				if (parent instanceof Model) {
+				if (parent instanceof ModelManager) {
 					return EMFProperties
 							.list(EresourcePackage.Literals.CDO_RESOURCE__CONTENTS)
-							.observe(((Model) parent).getServerResource());
+							.observe(((ModelManager) parent).getServerResource());
 				}
 				if (parent instanceof Server) {
 					return EMFProperties
@@ -46,7 +46,7 @@ public class MailContentProvider extends ObservableListTreeContentProvider {
 					return ((Folder) element).getServer();
 				}
 				if (element instanceof Server) {
-					return Model.INSTANCE;
+					return ModelManager.INSTANCE;
 				}
 				return super.getParent(element);
 			}

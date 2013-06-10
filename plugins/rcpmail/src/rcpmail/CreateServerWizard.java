@@ -2,12 +2,12 @@ package rcpmail;
 
 import org.eclipse.jface.wizard.Wizard;
 
-import rcpmail.model.Model;
+import rcpmail.model.ModelManager;
 import rcpmail.model.Server;
 
 public class CreateServerWizard extends Wizard {
 
-	private final Server server = Model.INSTANCE.createServer();
+	private final Server server = ModelManager.INSTANCE.createServer();
 	
 	public CreateServerWizard() {
 		server.setHostname("localhost");
@@ -23,7 +23,7 @@ public class CreateServerWizard extends Wizard {
 	}
 
 	public boolean performFinish() {
-		Model.INSTANCE.addServer(server);
+		ModelManager.INSTANCE.addServer(server);
 		return true;
 	}
 

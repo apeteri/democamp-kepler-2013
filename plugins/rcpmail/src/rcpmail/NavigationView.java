@@ -7,7 +7,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
-import rcpmail.model.Model;
+import rcpmail.model.ModelManager;
 
 public class NavigationView extends ViewPart {
 
@@ -23,8 +23,8 @@ public class NavigationView extends ViewPart {
 		treeViewer.setLabelProvider(new MailLabelProvider(contentProvider
 				.getKnownElements()));
 
-		treeViewer.setInput(Model.INSTANCE);
-		Object defaultSelection = Model.INSTANCE.getDefaultSelection();
+		treeViewer.setInput(ModelManager.INSTANCE);
+		Object defaultSelection = ModelManager.INSTANCE.getDefaultSelection();
 		if (defaultSelection != null) {
 			treeViewer.setSelection(new StructuredSelection(defaultSelection));
 		}

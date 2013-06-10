@@ -39,9 +39,9 @@ import rcpmail.model.util.FolderAdapter;
  * @author Eike Stepper
  * @author András Péteri
  */
-public class Model extends Lifecycle {
+public class ModelManager extends Lifecycle {
 
-	public static final Model INSTANCE = new Model();
+	public static final ModelManager INSTANCE = new ModelManager();
 
 	private CDONet4jSession session;
 
