@@ -2,10 +2,11 @@ package rcpmail;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.conversion.IConverter;
+import org.eclipse.core.databinding.observable.Realm;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.core.databinding.observable.value.WritableValue;
+import org.eclipse.emf.databinding.EMFObservables;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -37,6 +38,7 @@ import rcpmail.handlers.DeleteViewMessageHandler;
 import rcpmail.handlers.MarkAsSpamAndMoveHandler;
 import rcpmail.handlers.MarkViewAsSpamAndMoveHandler;
 import rcpmail.model.Message;
+import rcpmail.model.ModelPackage;
 
 public class MessageView extends ViewPart implements ISelectionListener {
 
@@ -124,22 +126,27 @@ public class MessageView extends ViewPart implements ISelectionListener {
 
 		dbc = new DataBindingContext();
 
-		IObservableValue subjectObservable = BeansObservables
-				.observeDetailValue(messageValue, "subject", String.class);
+		IObservableValue subjectObservable = EMFObservables
+				.observeDetailValue(Realm.getDefault(), messageValue, 
+						ModelPackage.Literals.MESSAGE__SUBJECT);
 		ISWTObservableValue subjectLabelObservable = SWTObservables
 				.observeText(subjectLabel);
 		dbc.bindValue(subjectLabelObservable, subjectObservable, null, null);
 
 		dbc.bindValue(SWTObservables.observeText(bodyText, SWT.Modify),
-				BeansObservables.observeDetailValue(messageValue, "body",
-						String.class));
+				EMFObservables.observeDetailValue(Realm.getDefault(), messageValue, 
+						ModelPackage.Literals.MESSAGE__BODY));
 		dbc.bindValue(SWTObservables.observeSelection(spamButton),
-				BeansObservables.observeDetailValue(messageValue, "spam",
-						boolean.class));
-		dbc.bindValue(SWTObservables.observeText(date), BeansObservables
-				.observeDetailValue(messageValue, "date", null));
-		dbc.bindValue(SWTObservables.observeText(link), BeansObservables
-				.observeDetailValue(messageValue, "from", null), null, new UpdateValueStrategy().setConverter(new IConverter(){
+				EMFObservables.observeDetailValue(Realm.getDefault(), messageValue, 
+						ModelPackage.Literals.MESSAGE__SPAM));
+		dbc.bindValue(SWTObservables.observeText(date), 
+				EMFObservables.observeDetailValue(Realm.getDefault(), messageValue, 
+						ModelPackage.Literals.MESSAGE__DATE));
+		dbc.bindValue(SWTObservables.observeText(link), 
+				EMFObservables.observeDetailValue(Realm.getDefault(), messageValue, 
+						ModelPackage.Literals.MESSAGE__FROM), 
+						null, 
+						new UpdateValueStrategy().setConverter(new IConverter(){
 				
 					public Object getToType() {
 						return String.class;

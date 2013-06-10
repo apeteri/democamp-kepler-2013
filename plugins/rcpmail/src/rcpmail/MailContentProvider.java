@@ -1,13 +1,14 @@
 package rcpmail;
 
-import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.IObservable;
 import org.eclipse.core.databinding.observable.masterdetail.IObservableFactory;
+import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.jface.databinding.viewers.ObservableListTreeContentProvider;
 import org.eclipse.jface.databinding.viewers.TreeStructureAdvisor;
 
 import rcpmail.model.Folder;
 import rcpmail.model.Model;
+import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
 
 public class MailContentProvider extends ObservableListTreeContentProvider {
@@ -21,10 +22,10 @@ public class MailContentProvider extends ObservableListTreeContentProvider {
 		return new IObservableFactory() {
 			public IObservable createObservable(Object parent) {
 				if (parent instanceof Model) {
-					return BeanProperties.list("servers").observe(parent);
+					return ((Model) parent).getServers();
 				}
 				if (parent instanceof Server) {
-					return BeanProperties.list("folders").observe(parent);
+					return EMFProperties.list(ModelPackage.Literals.SERVER__FOLDERS).observe(parent);
 				}
 				return null;
 			}
@@ -39,9 +40,9 @@ public class MailContentProvider extends ObservableListTreeContentProvider {
 				if (element instanceof Folder) {
 					return ((Folder) element).getServer();
 				}
-//				if (element instanceof Server) {
-//					return ((Server) element).getModel();
-//				}
+				if (element instanceof Server) {
+					return Model.getInstance();
+				}
 				return super.getParent(element);
 			}
 		};

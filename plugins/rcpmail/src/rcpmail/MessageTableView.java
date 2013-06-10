@@ -1,11 +1,12 @@
 package rcpmail;
 
-import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.list.IObservableList;
 import org.eclipse.core.databinding.observable.masterdetail.MasterDetailObservables;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.databinding.property.Properties;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -38,6 +39,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
+import rcpmail.model.ModelPackage;
 
 public class MessageTableView extends ViewPart implements ISelectionListener {
 
@@ -101,9 +103,12 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 		initializeMenu();
 		initializeContextMenu();
 
-		IObservableList messagesOfSelectedFolder = MasterDetailObservables
-				.detailList(selectedFolder, BeanProperties.list("messages")
-						.listFactory(), Message.class);
+		IObservableList messagesOfSelectedFolder = MasterDetailObservables.detailList(
+				selectedFolder, 
+				EMFProperties
+						.list(ModelPackage.Literals.FOLDER__MESSAGES)
+						.listFactory(), 
+				null);
 		
 		gray = resourceManager.createColor(new RGB(100, 100, 100));
 		italics = resourceManager.createFont(FontDescriptor.createFrom(
@@ -111,9 +116,9 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 
 		ObservableListContentProvider contentProvider = new ObservableListContentProvider();
 		tableViewer.setContentProvider(contentProvider);
-		initLabelProvider(columnFrom, "from", contentProvider);
-		initLabelProvider(columnSubject, "subject", contentProvider);
-		initLabelProvider(columnDate, "date", contentProvider);
+		initLabelProvider(columnFrom, ModelPackage.Literals.MESSAGE__FROM, contentProvider);
+		initLabelProvider(columnSubject, ModelPackage.Literals.MESSAGE__SUBJECT, contentProvider);
+		initLabelProvider(columnDate, ModelPackage.Literals.MESSAGE__DATE, contentProvider);
 		
 		tableViewer.setInput(messagesOfSelectedFolder);
 		
@@ -129,10 +134,12 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 	}
 
 	private void initLabelProvider(TableViewerColumn column,
-			String propertyName, ObservableListContentProvider contentProvider) {
-		column.setLabelProvider(new ObservableMapCellLabelProvider(Properties
-				.observeEach(contentProvider.getKnownElements(), BeanProperties
-						.values(new String[] { propertyName, "spam" }))){
+			EStructuralFeature feature, ObservableListContentProvider contentProvider) {
+		
+		column.setLabelProvider(new ObservableMapCellLabelProvider(
+				Properties.observeEach(
+						contentProvider.getKnownElements(), 
+						EMFProperties.values(feature, ModelPackage.Literals.MESSAGE__SPAM))){
 
 			public void update(ViewerCell cell) {
 				super.update(cell);

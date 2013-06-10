@@ -1,8 +1,8 @@
 package rcpmail;
 
-import org.eclipse.core.databinding.beans.BeanProperties;
 import org.eclipse.core.databinding.observable.set.IObservableSet;
 import org.eclipse.core.databinding.property.Properties;
+import org.eclipse.emf.databinding.EMFProperties;
 import org.eclipse.jface.databinding.viewers.ObservableMapLabelProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
@@ -11,6 +11,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import rcpmail.model.Folder;
+import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
 
 final class MailLabelProvider extends ObservableMapLabelProvider {
@@ -28,8 +29,11 @@ final class MailLabelProvider extends ObservableMapLabelProvider {
 	MailLabelProvider(IObservableSet knownElements) {
 		// We pass an array of properties so that appropriate listeners
 		// are added automatically to each element displayed in the viewer.
-		super(Properties.observeEach(knownElements, BeanProperties
-				.values(new String[] { "name", "hostname", "messages" })));
+		super(Properties.observeEach(knownElements, EMFProperties.values(
+				ModelPackage.Literals.FOLDER__NAME, 
+				ModelPackage.Literals.FOLDER__MESSAGES,
+				ModelPackage.Literals.SERVER__HOSTNAME)));
+		
 		initializeImageDescriptors();
 	}
 
