@@ -4,12 +4,14 @@ package rcpmail.model.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import rcpmail.model.*;
+import rcpmail.model.Folder;
+import rcpmail.model.Message;
+import rcpmail.model.ModelObject;
+import rcpmail.model.ModelPackage;
+import rcpmail.model.Server;
 
 /**
  * <!-- begin-user-doc -->
@@ -154,11 +156,11 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @return the new adapter.
    * @see rcpmail.model.Folder
-   * @generated
+   * @generated NOT
    */
   public Adapter createFolderAdapter()
   {
-    return null;
+    return new FolderAdapter();
   }
 
   /**

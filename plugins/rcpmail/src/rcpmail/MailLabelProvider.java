@@ -31,7 +31,7 @@ final class MailLabelProvider extends ObservableMapLabelProvider {
 		// are added automatically to each element displayed in the viewer.
 		super(Properties.observeEach(knownElements, EMFProperties.values(
 				ModelPackage.Literals.FOLDER__NAME, 
-				ModelPackage.Literals.FOLDER__MESSAGES,
+				ModelPackage.Literals.FOLDER__MESSAGE_COUNT,
 				ModelPackage.Literals.SERVER__HOSTNAME)));
 		
 		initializeImageDescriptors();
@@ -60,7 +60,7 @@ final class MailLabelProvider extends ObservableMapLabelProvider {
 		}
 		if (element instanceof Folder) {
 			Folder folder = (Folder) element;
-			return folder.getName() + " (" + folder.getMessages().size() + ")";
+			return folder.getName() + " (" + folder.getMessageCount() + ")";
 		}
 		return null;
 	}

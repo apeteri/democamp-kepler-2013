@@ -5,6 +5,8 @@ import java.util.Date;
 import org.eclipse.core.databinding.observable.list.ObservableList;
 import org.eclipse.core.databinding.observable.list.WritableList;
 
+import rcpmail.model.util.ModelAdapterFactory;
+
 public class Model {
 	private static Model model;
 	private ObservableList/*<Server>*/ servers = WritableList.withElementType(Server.class);
@@ -102,6 +104,7 @@ public class Model {
 	
 	private Folder createFolder(String name) {
 		Folder folder = ModelFactory.eINSTANCE.createFolder();
+		folder.eAdapters().add(new ModelAdapterFactory().createFolderAdapter());
 		folder.setName(name);
 		return folder;
 	}

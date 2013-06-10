@@ -216,13 +216,22 @@ public interface ModelPackage extends EPackage
   int FOLDER__MESSAGES = 2;
 
   /**
+   * The feature id for the '<em><b>Message Count</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOLDER__MESSAGE_COUNT = 3;
+
+  /**
    * The number of structural features of the '<em>Folder</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FOLDER_FEATURE_COUNT = 3;
+  int FOLDER_FEATURE_COUNT = 4;
 
   /**
    * The number of operations of the '<em>Folder</em>' class.
@@ -464,6 +473,17 @@ public interface ModelPackage extends EPackage
   EReference getFolder_Messages();
 
   /**
+   * Returns the meta object for the attribute '{@link rcpmail.model.Folder#getMessageCount <em>Message Count</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Message Count</em>'.
+   * @see rcpmail.model.Folder#getMessageCount()
+   * @see #getFolder()
+   * @generated
+   */
+  EAttribute getFolder_MessageCount();
+
+  /**
    * Returns the meta object for class '{@link rcpmail.model.Message <em>Message</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -683,6 +703,14 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EReference FOLDER__MESSAGES = eINSTANCE.getFolder_Messages();
+
+    /**
+     * The meta object literal for the '<em><b>Message Count</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FOLDER__MESSAGE_COUNT = eINSTANCE.getFolder_MessageCount();
 
     /**
      * The meta object literal for the '{@link rcpmail.model.impl.MessageImpl <em>Message</em>}' class.

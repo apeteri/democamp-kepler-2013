@@ -33,6 +33,11 @@ class Folder
 	container Server server opposite folders
 	
 	contains Message[] messages	opposite folder
+	
+	int messageCount get
+	{
+		messages.size
+	}
 }
 
 class Message

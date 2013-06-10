@@ -34,6 +34,7 @@ import rcpmail.model.Server;
  *   <li>{@link rcpmail.model.impl.FolderImpl#getName <em>Name</em>}</li>
  *   <li>{@link rcpmail.model.impl.FolderImpl#getServer <em>Server</em>}</li>
  *   <li>{@link rcpmail.model.impl.FolderImpl#getMessages <em>Messages</em>}</li>
+ *   <li>{@link rcpmail.model.impl.FolderImpl#getMessageCount <em>Message Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,16 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
    * @ordered
    */
   protected EList<Message> messages;
+
+  /**
+   * The default value of the '{@link #getMessageCount() <em>Message Count</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMessageCount()
+   * @generated
+   * @ordered
+   */
+  protected static final int MESSAGE_COUNT_EDEFAULT = 0;
 
   /**
    * <!-- begin-user-doc -->
@@ -179,6 +190,18 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getMessageCount()
+  {
+    EList<Message> _messages = this.getMessages();
+    int _size = _messages.size();
+    return _size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
@@ -245,6 +268,8 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
         return getServer();
       case ModelPackage.FOLDER__MESSAGES:
         return getMessages();
+      case ModelPackage.FOLDER__MESSAGE_COUNT:
+        return getMessageCount();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -313,6 +338,8 @@ public class FolderImpl extends MinimalEObjectImpl.Container implements Folder
         return getServer() != null;
       case ModelPackage.FOLDER__MESSAGES:
         return messages != null && !messages.isEmpty();
+      case ModelPackage.FOLDER__MESSAGE_COUNT:
+        return getMessageCount() != MESSAGE_COUNT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }

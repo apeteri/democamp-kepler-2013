@@ -255,6 +255,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getFolder_MessageCount()
+  {
+    return (EAttribute)folderEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMessage()
   {
     return messageEClass;
@@ -375,6 +385,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     createEAttribute(folderEClass, FOLDER__NAME);
     createEReference(folderEClass, FOLDER__SERVER);
     createEReference(folderEClass, FOLDER__MESSAGES);
+    createEAttribute(folderEClass, FOLDER__MESSAGE_COUNT);
 
     messageEClass = createEClass(MESSAGE);
     createEAttribute(messageEClass, MESSAGE__ID);
@@ -437,6 +448,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     initEAttribute(getFolder_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFolder_Server(), this.getServer(), this.getServer_Folders(), "server", null, 0, 1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFolder_Messages(), this.getMessage(), this.getMessage_Folder(), "messages", null, 0, -1, Folder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFolder_MessageCount(), theEcorePackage.getEInt(), "messageCount", null, 0, 1, Folder.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
     initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMessage_Id(), theEcorePackage.getEInt(), "id", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

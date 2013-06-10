@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link rcpmail.model.Folder#getName <em>Name</em>}</li>
  *   <li>{@link rcpmail.model.Folder#getServer <em>Server</em>}</li>
  *   <li>{@link rcpmail.model.Folder#getMessages <em>Messages</em>}</li>
+ *   <li>{@link rcpmail.model.Folder#getMessageCount <em>Message Count</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,5 +98,21 @@ public interface Folder extends EObject
    * @generated
    */
   EList<Message> getMessages();
+
+  /**
+   * Returns the value of the '<em><b>Message Count</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Message Count</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Message Count</em>' attribute.
+   * @see rcpmail.model.ModelPackage#getFolder_MessageCount()
+   * @model unique="false" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.eclipse.org/emf/2002/GenModel get='<%org.eclipse.emf.common.util.EList%><<%rcpmail.model.Message%>> _messages = this.getMessages();\nint _size = _messages.size();\nreturn _size;'"
+   * @generated
+   */
+  int getMessageCount();
 
 } // Folder
