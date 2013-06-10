@@ -1,4 +1,9 @@
-@GenModel(bundleManifest="false")
+@GenModel(
+	bundleManifest="false",
+	featureDelegation="Reflective",
+	modelPluginVariables="CDO=org.eclipse.emf.cdo org.eclipse.xtext.xbase.lib",
+	rootExtendsClass="org.eclipse.emf.internal.cdo.CDOObjectImpl", 
+	rootExtendsInterface="org.eclipse.emf.cdo.CDOObject")
 package rcpmail.model
 
 interface ModelObject wraps rcpmail.model.ModelObject

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see rcpmail.model.ModelFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='rcpmail' bundleManifest='false'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel basePackage='rcpmail' bundleManifest='false' featureDelegation='Reflective' modelPluginVariables='CDO=org.eclipse.emf.cdo org.eclipse.xtext.xbase.lib' rootExtendsClass='org.eclipse.emf.internal.cdo.CDOObjectImpl' rootExtendsInterface='org.eclipse.emf.cdo.CDOObject'"
  * @generated
  */
 public interface ModelPackage extends EPackage

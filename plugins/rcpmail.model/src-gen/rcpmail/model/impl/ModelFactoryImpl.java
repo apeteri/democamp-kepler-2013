@@ -5,12 +5,15 @@ package rcpmail.model.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import rcpmail.model.*;
+import rcpmail.model.Folder;
+import rcpmail.model.Message;
+import rcpmail.model.ModelFactory;
+import rcpmail.model.ModelPackage;
+import rcpmail.model.Server;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,9 +67,9 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     switch (eClass.getClassifierID())
     {
-      case ModelPackage.SERVER: return createServer();
-      case ModelPackage.FOLDER: return createFolder();
-      case ModelPackage.MESSAGE: return createMessage();
+      case ModelPackage.SERVER: return (EObject)createServer();
+      case ModelPackage.FOLDER: return (EObject)createFolder();
+      case ModelPackage.MESSAGE: return (EObject)createMessage();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }

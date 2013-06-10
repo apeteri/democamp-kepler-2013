@@ -2,7 +2,7 @@
  */
 package rcpmail.model;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.CDOObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,9 +24,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see rcpmail.model.ModelPackage#getMessage()
  * @model superTypes="rcpmail.model.ModelObject"
+ * @extends CDOObject
  * @generated
  */
-public interface Message extends EObject, ModelObject
+public interface Message extends CDOObject, ModelObject
 {
   /**
    * Returns the value of the '<em><b>Id</b></em>' attribute.

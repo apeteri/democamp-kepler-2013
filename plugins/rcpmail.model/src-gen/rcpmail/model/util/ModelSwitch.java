@@ -4,10 +4,14 @@ package rcpmail.model.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
 
 import rcpmail.model.*;
+import rcpmail.model.Folder;
+import rcpmail.model.Message;
+import rcpmail.model.ModelObject;
+import rcpmail.model.ModelPackage;
+import rcpmail.model.Server;
 
 /**
  * <!-- begin-user-doc -->
