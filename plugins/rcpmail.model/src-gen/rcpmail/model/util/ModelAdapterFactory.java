@@ -75,6 +75,11 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
     new ModelSwitch<Adapter>()
     {
       @Override
+      public Adapter caseModelObject(ModelObject object)
+      {
+        return createModelObjectAdapter();
+      }
+      @Override
       public Adapter caseServer(Server object)
       {
         return createServerAdapter();
@@ -110,6 +115,21 @@ public class ModelAdapterFactory extends AdapterFactoryImpl
     return modelSwitch.doSwitch((EObject)target);
   }
 
+
+  /**
+   * Creates a new adapter for an object of class '{@link rcpmail.model.ModelObject <em>Object</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see rcpmail.model.ModelObject
+   * @generated
+   */
+  public Adapter createModelObjectAdapter()
+  {
+    return null;
+  }
 
   /**
    * Creates a new adapter for an object of class '{@link rcpmail.model.Server <em>Server</em>}'.

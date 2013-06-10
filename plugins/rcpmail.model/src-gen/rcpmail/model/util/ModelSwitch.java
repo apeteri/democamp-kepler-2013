@@ -72,6 +72,13 @@ public class ModelSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
+      case ModelPackage.MODEL_OBJECT:
+      {
+        ModelObject modelObject = (ModelObject)theEObject;
+        T result = caseModelObject(modelObject);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ModelPackage.SERVER:
       {
         Server server = (Server)theEObject;
@@ -95,6 +102,22 @@ public class ModelSwitch<T> extends Switch<T>
       }
       default: return defaultCase(theEObject);
     }
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Object</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModelObject(ModelObject object)
+  {
+    return null;
   }
 
   /**

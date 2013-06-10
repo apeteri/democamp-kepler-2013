@@ -60,6 +60,34 @@ public interface ModelPackage extends EPackage
   ModelPackage eINSTANCE = rcpmail.model.impl.ModelPackageImpl.init();
 
   /**
+   * The meta object id for the '{@link rcpmail.model.ModelObject <em>Object</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see rcpmail.model.ModelObject
+   * @see rcpmail.model.impl.ModelPackageImpl#getModelObject()
+   * @generated
+   */
+  int MODEL_OBJECT = 0;
+
+  /**
+   * The number of structural features of the '<em>Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_OBJECT_FEATURE_COUNT = 0;
+
+  /**
+   * The number of operations of the '<em>Object</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL_OBJECT_OPERATION_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link rcpmail.model.impl.ServerImpl <em>Server</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -67,7 +95,7 @@ public interface ModelPackage extends EPackage
    * @see rcpmail.model.impl.ModelPackageImpl#getServer()
    * @generated
    */
-  int SERVER = 0;
+  int SERVER = 1;
 
   /**
    * The feature id for the '<em><b>Hostname</b></em>' attribute.
@@ -158,7 +186,7 @@ public interface ModelPackage extends EPackage
    * @see rcpmail.model.impl.ModelPackageImpl#getFolder()
    * @generated
    */
-  int FOLDER = 1;
+  int FOLDER = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -213,7 +241,7 @@ public interface ModelPackage extends EPackage
    * @see rcpmail.model.impl.ModelPackageImpl#getMessage()
    * @generated
    */
-  int MESSAGE = 2;
+  int MESSAGE = 3;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -296,6 +324,16 @@ public interface ModelPackage extends EPackage
    */
   int MESSAGE_OPERATION_COUNT = 0;
 
+
+  /**
+   * Returns the meta object for class '{@link rcpmail.model.ModelObject <em>Object</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Object</em>'.
+   * @see rcpmail.model.ModelObject
+   * @generated
+   */
+  EClass getModelObject();
 
   /**
    * Returns the meta object for class '{@link rcpmail.model.Server <em>Server</em>}'.
@@ -536,6 +574,16 @@ public interface ModelPackage extends EPackage
    */
   interface Literals
   {
+    /**
+     * The meta object literal for the '{@link rcpmail.model.ModelObject <em>Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see rcpmail.model.ModelObject
+     * @see rcpmail.model.impl.ModelPackageImpl#getModelObject()
+     * @generated
+     */
+    EClass MODEL_OBJECT = eINSTANCE.getModelObject();
+
     /**
      * The meta object literal for the '{@link rcpmail.model.impl.ServerImpl <em>Server</em>}' class.
      * <!-- begin-user-doc -->

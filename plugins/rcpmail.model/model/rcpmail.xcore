@@ -1,6 +1,11 @@
 @GenModel(bundleManifest="false")
 package rcpmail.model
 
+interface ModelObject
+{
+	// Marker interface for items which should be shown in the navigator
+}
+
 class Server
 {
 	String hostname

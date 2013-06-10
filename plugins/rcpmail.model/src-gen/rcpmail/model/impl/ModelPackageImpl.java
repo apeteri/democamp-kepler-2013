@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
 import rcpmail.model.ModelFactory;
+import rcpmail.model.ModelObject;
 import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
 
@@ -25,6 +26,13 @@ import rcpmail.model.Server;
  */
 public class ModelPackageImpl extends EPackageImpl implements ModelPackage
 {
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass modelObjectEClass = null;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -110,6 +118,16 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(ModelPackage.eNS_URI, theModelPackage);
     return theModelPackage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getModelObject()
+  {
+    return modelObjectEClass;
   }
 
   /**
@@ -342,6 +360,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     isCreated = true;
 
     // Create classes and their features
+    modelObjectEClass = createEClass(MODEL_OBJECT);
+
     serverEClass = createEClass(SERVER);
     createEAttribute(serverEClass, SERVER__HOSTNAME);
     createEAttribute(serverEClass, SERVER__USERNAME);
@@ -400,6 +420,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     // Add supertypes to classes
 
     // Initialize classes, features, and operations; add parameters
+    initEClass(modelObjectEClass, ModelObject.class, "ModelObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(serverEClass, Server.class, "Server", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getServer_Hostname(), theEcorePackage.getEString(), "hostname", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getServer_Username(), theEcorePackage.getEString(), "username", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
