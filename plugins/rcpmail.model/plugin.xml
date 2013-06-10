@@ -6,4 +6,11 @@
 
 <plugin>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="rcpmail.model"
+            class="rcpmail.model.ModelPackage"
+            genModel="model/rcpmail.xcore"/>
+   </extension>
+
 </plugin>
