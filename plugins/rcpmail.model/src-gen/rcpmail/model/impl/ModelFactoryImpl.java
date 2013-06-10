@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import rcpmail.model.*;
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
 import rcpmail.model.ModelFactory;

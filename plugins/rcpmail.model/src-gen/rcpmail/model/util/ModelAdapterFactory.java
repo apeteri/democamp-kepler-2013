@@ -7,7 +7,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
-import rcpmail.model.*;
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
 import rcpmail.model.ModelObject;
