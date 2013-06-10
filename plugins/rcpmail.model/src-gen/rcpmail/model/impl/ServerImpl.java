@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -261,7 +262,7 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
   {
     if (folders == null)
     {
-      folders = new EObjectContainmentEList<Folder>(Folder.class, this, ModelPackage.SERVER__FOLDERS);
+      folders = new EObjectContainmentWithInverseEList<Folder>(Folder.class, this, ModelPackage.SERVER__FOLDERS, ModelPackage.FOLDER__SERVER);
     }
     return folders;
   }
@@ -286,6 +287,23 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
       };
     Folder _findFirst = IterableExtensions.<Folder>findFirst(_folders, _function);
     return _findFirst;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ModelPackage.SERVER__FOLDERS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getFolders()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**

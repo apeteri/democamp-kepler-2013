@@ -170,13 +170,31 @@ public interface ModelPackage extends EPackage
   int FOLDER__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Server</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOLDER__SERVER = 1;
+
+  /**
+   * The feature id for the '<em><b>Messages</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOLDER__MESSAGES = 2;
+
+  /**
    * The number of structural features of the '<em>Folder</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FOLDER_FEATURE_COUNT = 1;
+  int FOLDER_FEATURE_COUNT = 3;
 
   /**
    * The number of operations of the '<em>Folder</em>' class.
@@ -186,6 +204,35 @@ public interface ModelPackage extends EPackage
    * @ordered
    */
   int FOLDER_OPERATION_COUNT = 0;
+
+
+  /**
+   * The meta object id for the '{@link rcpmail.model.impl.MessageImpl <em>Message</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see rcpmail.model.impl.MessageImpl
+   * @see rcpmail.model.impl.ModelPackageImpl#getMessage()
+   * @generated
+   */
+  int MESSAGE = 2;
+
+  /**
+   * The number of structural features of the '<em>Message</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_FEATURE_COUNT = 0;
+
+  /**
+   * The number of operations of the '<em>Message</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MESSAGE_OPERATION_COUNT = 0;
 
 
   /**
@@ -295,6 +342,38 @@ public interface ModelPackage extends EPackage
   EAttribute getFolder_Name();
 
   /**
+   * Returns the meta object for the container reference '{@link rcpmail.model.Folder#getServer <em>Server</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Server</em>'.
+   * @see rcpmail.model.Folder#getServer()
+   * @see #getFolder()
+   * @generated
+   */
+  EReference getFolder_Server();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link rcpmail.model.Folder#getMessages <em>Messages</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Messages</em>'.
+   * @see rcpmail.model.Folder#getMessages()
+   * @see #getFolder()
+   * @generated
+   */
+  EReference getFolder_Messages();
+
+  /**
+   * Returns the meta object for class '{@link rcpmail.model.Message <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Message</em>'.
+   * @see rcpmail.model.Message
+   * @generated
+   */
+  EClass getMessage();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -401,6 +480,32 @@ public interface ModelPackage extends EPackage
      * @generated
      */
     EAttribute FOLDER__NAME = eINSTANCE.getFolder_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Server</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOLDER__SERVER = eINSTANCE.getFolder_Server();
+
+    /**
+     * The meta object literal for the '<em><b>Messages</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOLDER__MESSAGES = eINSTANCE.getFolder_Messages();
+
+    /**
+     * The meta object literal for the '{@link rcpmail.model.impl.MessageImpl <em>Message</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see rcpmail.model.impl.MessageImpl
+     * @see rcpmail.model.impl.ModelPackageImpl#getMessage()
+     * @generated
+     */
+    EClass MESSAGE = eINSTANCE.getMessage();
 
   }
 

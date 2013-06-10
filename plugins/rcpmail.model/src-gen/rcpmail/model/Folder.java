@@ -2,6 +2,7 @@
  */
 package rcpmail.model;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link rcpmail.model.Folder#getName <em>Name</em>}</li>
+ *   <li>{@link rcpmail.model.Folder#getServer <em>Server</em>}</li>
+ *   <li>{@link rcpmail.model.Folder#getMessages <em>Messages</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,5 +50,49 @@ public interface Folder extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Server</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link rcpmail.model.Server#getFolders <em>Folders</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Server</em>' container reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Server</em>' container reference.
+   * @see #setServer(Server)
+   * @see rcpmail.model.ModelPackage#getFolder_Server()
+   * @see rcpmail.model.Server#getFolders
+   * @model opposite="folders" transient="false"
+   * @generated
+   */
+  Server getServer();
+
+  /**
+   * Sets the value of the '{@link rcpmail.model.Folder#getServer <em>Server</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Server</em>' container reference.
+   * @see #getServer()
+   * @generated
+   */
+  void setServer(Server value);
+
+  /**
+   * Returns the value of the '<em><b>Messages</b></em>' containment reference list.
+   * The list contents are of type {@link rcpmail.model.Message}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Messages</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Messages</em>' containment reference list.
+   * @see rcpmail.model.ModelPackage#getFolder_Messages()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Message> getMessages();
 
 } // Folder

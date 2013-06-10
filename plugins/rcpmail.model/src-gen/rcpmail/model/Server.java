@@ -135,6 +135,7 @@ public interface Server extends EObject
   /**
    * Returns the value of the '<em><b>Folders</b></em>' containment reference list.
    * The list contents are of type {@link rcpmail.model.Folder}.
+   * It is bidirectional and its opposite is '{@link rcpmail.model.Folder#getServer <em>Server</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Folders</em>' containment reference list isn't clear,
@@ -143,7 +144,8 @@ public interface Server extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Folders</em>' containment reference list.
    * @see rcpmail.model.ModelPackage#getServer_Folders()
-   * @model containment="true"
+   * @see rcpmail.model.Folder#getServer
+   * @model opposite="server" containment="true"
    * @generated
    */
   EList<Folder> getFolders();

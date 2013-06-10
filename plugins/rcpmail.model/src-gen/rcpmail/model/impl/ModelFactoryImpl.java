@@ -66,6 +66,7 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
     {
       case ModelPackage.SERVER: return createServer();
       case ModelPackage.FOLDER: return createFolder();
+      case ModelPackage.MESSAGE: return createMessage();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -91,6 +92,17 @@ public class ModelFactoryImpl extends EFactoryImpl implements ModelFactory
   {
     FolderImpl folder = new FolderImpl();
     return folder;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Message createMessage()
+  {
+    MessageImpl message = new MessageImpl();
+    return message;
   }
 
   /**

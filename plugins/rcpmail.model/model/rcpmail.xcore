@@ -7,7 +7,7 @@ class Server
 	String password
 	int port
 	
-	contains Folder[] folders
+	contains Folder[] folders opposite server
 	
 	op Folder getDefaultSelection()
 	{
@@ -22,5 +22,14 @@ class Server
 
 class Folder
 {
-	String name	
+	String name
+	
+	container Server server opposite folders
+	
+	contains Message[] messages	
+}
+
+class Message
+{
+	
 }
