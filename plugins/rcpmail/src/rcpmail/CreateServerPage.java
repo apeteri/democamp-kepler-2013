@@ -6,12 +6,14 @@ import org.eclipse.core.databinding.AggregateValidationStatus;
 import org.eclipse.core.databinding.Binding;
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
-import org.eclipse.core.databinding.beans.BeansObservables;
 import org.eclipse.core.databinding.observable.value.IValueChangeListener;
 import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
 import org.eclipse.core.databinding.validation.IValidator;
 import org.eclipse.core.databinding.validation.ValidationStatus;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.databinding.EMFObservables;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.databinding.swt.ISWTObservable;
 import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.wizard.WizardPageSupport;
@@ -26,6 +28,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import rcpmail.model.ModelPackage;
 import rcpmail.model.Server;
 
 public class CreateServerPage extends WizardPage {
@@ -112,12 +115,10 @@ public class CreateServerPage extends WizardPage {
 
 		final DataBindingContext dbc = new DataBindingContext();
 
-		bind(dbc, hostnameText, server, "hostname", new HostnameValidator());
-		bind(dbc, usernameText, server, "username", new NotEmptyValidator(
-				"username"));
-		bind(dbc, passwordText, server, "password", new NotEmptyValidator(
-				"password"));
-		bind(dbc, portText, server, "port", null);
+		bind(dbc, hostnameText, server, ModelPackage.Literals.SERVER__HOSTNAME, new HostnameValidator());
+		bind(dbc, usernameText, server, ModelPackage.Literals.SERVER__USERNAME, new NotEmptyValidator("username"));
+		bind(dbc, passwordText, server, ModelPackage.Literals.SERVER__PASSWORD, new NotEmptyValidator("password"));
+		bind(dbc, portText, server, ModelPackage.Literals.SERVER__PORT, null);
 
 		final AggregateValidationStatus aggregateValidationStatus = new AggregateValidationStatus(
 				dbc.getValidationStatusProviders(),
@@ -154,15 +155,15 @@ public class CreateServerPage extends WizardPage {
 		WizardPageSupport.create(this, dbc);
 	}
 
-	private void bind(DataBindingContext dbc, Text textWidget, Object bean,
-			String property, IValidator validator) {
+	private void bind(DataBindingContext dbc, Text textWidget, EObject eObject,
+			EStructuralFeature feature, IValidator validator) {
 		UpdateValueStrategy targetToModel = null;
 		if (validator != null) {
 			targetToModel = new UpdateValueStrategy()
 					.setAfterConvertValidator(validator);
 		}
 		dbc.bindValue(SWTObservables.observeText(textWidget, SWT.Modify),
-				BeansObservables.observeValue(bean, property), targetToModel,
+				EMFObservables.observeValue(eObject, feature), targetToModel,
 				null);
 	}
 
