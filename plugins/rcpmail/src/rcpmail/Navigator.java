@@ -12,13 +12,13 @@ public class Navigator extends CommonNavigator {
 	public static String VIEW_ID = "rcpmail.navigatorView";
 	
 	public Object getInitialInput() {
-		return Model.getInstance();
+		return Model.INSTANCE;
 	}
 	
 	public void createPartControl(Composite aParent) {
 		super.createPartControl(aParent);
 		TreeViewer treeViewer = getCommonViewer();
-		Object defaultSelection = Model.getInstance().getDefaultSelection();
+		Object defaultSelection = Model.INSTANCE.getDefaultSelection();
 		if (defaultSelection != null) {
 			treeViewer.setSelection(new StructuredSelection(defaultSelection));
 		}

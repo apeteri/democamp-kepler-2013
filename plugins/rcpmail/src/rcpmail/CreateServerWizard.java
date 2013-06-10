@@ -7,7 +7,7 @@ import rcpmail.model.Server;
 
 public class CreateServerWizard extends Wizard {
 
-	private final Server server = Model.getInstance().createServer();
+	private final Server server = Model.INSTANCE.createServer();
 	
 	public CreateServerWizard() {
 		server.setHostname("localhost");
@@ -23,7 +23,7 @@ public class CreateServerWizard extends Wizard {
 	}
 
 	public boolean performFinish() {
-		Model.getInstance().addServer(server);
+		Model.INSTANCE.addServer(server);
 		return true;
 	}
 

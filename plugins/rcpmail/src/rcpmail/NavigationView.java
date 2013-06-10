@@ -23,8 +23,8 @@ public class NavigationView extends ViewPart {
 		treeViewer.setLabelProvider(new MailLabelProvider(contentProvider
 				.getKnownElements()));
 
-		treeViewer.setInput(Model.getInstance());
-		Object defaultSelection = Model.getInstance().getDefaultSelection();
+		treeViewer.setInput(Model.INSTANCE);
+		Object defaultSelection = Model.INSTANCE.getDefaultSelection();
 		if (defaultSelection != null) {
 			treeViewer.setSelection(new StructuredSelection(defaultSelection));
 		}
