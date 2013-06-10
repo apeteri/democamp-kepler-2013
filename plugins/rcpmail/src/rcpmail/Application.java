@@ -12,7 +12,7 @@ import org.eclipse.ui.PlatformUI;
 public class Application implements IApplication {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "rcpmail-99";
+	public static final String PLUGIN_ID = "rcpmail";
 
 	public Object start(IApplicationContext context) {
 		Display display = PlatformUI.createDisplay();
