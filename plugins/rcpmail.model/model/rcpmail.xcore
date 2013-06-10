@@ -1,1 +1,26 @@
 package rcpmail.model
+
+class Server
+{
+	String hostName
+	String userName
+	String password
+	int port
+	
+	contains Folder[] folders
+	
+	op Folder getDefaultSelection()
+	{
+		folders.findFirst(f | f.name == "Inbox")
+	}
+	
+	op Folder getJunkFolder()
+	{
+		folders.findFirst(f | f.name == "Junk")
+	} 
+}
+
+class Folder
+{
+	String name	
+}
