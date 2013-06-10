@@ -127,7 +127,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getServer_HostName()
+  public EAttribute getServer_Hostname()
   {
     return (EAttribute)serverEClass.getEStructuralFeatures().get(0);
   }
@@ -137,7 +137,7 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getServer_UserName()
+  public EAttribute getServer_Username()
   {
     return (EAttribute)serverEClass.getEStructuralFeatures().get(1);
   }
@@ -343,8 +343,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
 
     // Create classes and their features
     serverEClass = createEClass(SERVER);
-    createEAttribute(serverEClass, SERVER__HOST_NAME);
-    createEAttribute(serverEClass, SERVER__USER_NAME);
+    createEAttribute(serverEClass, SERVER__HOSTNAME);
+    createEAttribute(serverEClass, SERVER__USERNAME);
     createEAttribute(serverEClass, SERVER__PASSWORD);
     createEAttribute(serverEClass, SERVER__PORT);
     createEReference(serverEClass, SERVER__FOLDERS);
@@ -401,8 +401,8 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
 
     // Initialize classes, features, and operations; add parameters
     initEClass(serverEClass, Server.class, "Server", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getServer_HostName(), theEcorePackage.getEString(), "hostName", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getServer_UserName(), theEcorePackage.getEString(), "userName", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getServer_Hostname(), theEcorePackage.getEString(), "hostname", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getServer_Username(), theEcorePackage.getEString(), "username", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getServer_Password(), theEcorePackage.getEString(), "password", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getServer_Port(), theEcorePackage.getEInt(), "port", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getServer_Folders(), this.getFolder(), this.getFolder_Server(), "folders", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

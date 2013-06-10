@@ -70,22 +70,22 @@ public interface ModelPackage extends EPackage
   int SERVER = 0;
 
   /**
-   * The feature id for the '<em><b>Host Name</b></em>' attribute.
+   * The feature id for the '<em><b>Hostname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVER__HOST_NAME = 0;
+  int SERVER__HOSTNAME = 0;
 
   /**
-   * The feature id for the '<em><b>User Name</b></em>' attribute.
+   * The feature id for the '<em><b>Username</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SERVER__USER_NAME = 1;
+  int SERVER__USERNAME = 1;
 
   /**
    * The feature id for the '<em><b>Password</b></em>' attribute.
@@ -308,26 +308,26 @@ public interface ModelPackage extends EPackage
   EClass getServer();
 
   /**
-   * Returns the meta object for the attribute '{@link rcpmail.model.Server#getHostName <em>Host Name</em>}'.
+   * Returns the meta object for the attribute '{@link rcpmail.model.Server#getHostname <em>Hostname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Host Name</em>'.
-   * @see rcpmail.model.Server#getHostName()
+   * @return the meta object for the attribute '<em>Hostname</em>'.
+   * @see rcpmail.model.Server#getHostname()
    * @see #getServer()
    * @generated
    */
-  EAttribute getServer_HostName();
+  EAttribute getServer_Hostname();
 
   /**
-   * Returns the meta object for the attribute '{@link rcpmail.model.Server#getUserName <em>User Name</em>}'.
+   * Returns the meta object for the attribute '{@link rcpmail.model.Server#getUsername <em>Username</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>User Name</em>'.
-   * @see rcpmail.model.Server#getUserName()
+   * @return the meta object for the attribute '<em>Username</em>'.
+   * @see rcpmail.model.Server#getUsername()
    * @see #getServer()
    * @generated
    */
-  EAttribute getServer_UserName();
+  EAttribute getServer_Username();
 
   /**
    * Returns the meta object for the attribute '{@link rcpmail.model.Server#getPassword <em>Password</em>}'.
@@ -547,20 +547,20 @@ public interface ModelPackage extends EPackage
     EClass SERVER = eINSTANCE.getServer();
 
     /**
-     * The meta object literal for the '<em><b>Host Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Hostname</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SERVER__HOST_NAME = eINSTANCE.getServer_HostName();
+    EAttribute SERVER__HOSTNAME = eINSTANCE.getServer_Hostname();
 
     /**
-     * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Username</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute SERVER__USER_NAME = eINSTANCE.getServer_UserName();
+    EAttribute SERVER__USERNAME = eINSTANCE.getServer_Username();
 
     /**
      * The meta object literal for the '<em><b>Password</b></em>' attribute feature.

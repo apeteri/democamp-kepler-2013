@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link rcpmail.model.Server#getHostName <em>Host Name</em>}</li>
- *   <li>{@link rcpmail.model.Server#getUserName <em>User Name</em>}</li>
+ *   <li>{@link rcpmail.model.Server#getHostname <em>Hostname</em>}</li>
+ *   <li>{@link rcpmail.model.Server#getUsername <em>Username</em>}</li>
  *   <li>{@link rcpmail.model.Server#getPassword <em>Password</em>}</li>
  *   <li>{@link rcpmail.model.Server#getPort <em>Port</em>}</li>
  *   <li>{@link rcpmail.model.Server#getFolders <em>Folders</em>}</li>
@@ -29,56 +29,56 @@ import org.eclipse.emf.ecore.EObject;
 public interface Server extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Host Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Hostname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Host Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Hostname</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Host Name</em>' attribute.
-   * @see #setHostName(String)
-   * @see rcpmail.model.ModelPackage#getServer_HostName()
+   * @return the value of the '<em>Hostname</em>' attribute.
+   * @see #setHostname(String)
+   * @see rcpmail.model.ModelPackage#getServer_Hostname()
    * @model unique="false"
    * @generated
    */
-  String getHostName();
+  String getHostname();
 
   /**
-   * Sets the value of the '{@link rcpmail.model.Server#getHostName <em>Host Name</em>}' attribute.
+   * Sets the value of the '{@link rcpmail.model.Server#getHostname <em>Hostname</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Host Name</em>' attribute.
-   * @see #getHostName()
+   * @param value the new value of the '<em>Hostname</em>' attribute.
+   * @see #getHostname()
    * @generated
    */
-  void setHostName(String value);
+  void setHostname(String value);
 
   /**
-   * Returns the value of the '<em><b>User Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Username</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>User Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Username</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>User Name</em>' attribute.
-   * @see #setUserName(String)
-   * @see rcpmail.model.ModelPackage#getServer_UserName()
+   * @return the value of the '<em>Username</em>' attribute.
+   * @see #setUsername(String)
+   * @see rcpmail.model.ModelPackage#getServer_Username()
    * @model unique="false"
    * @generated
    */
-  String getUserName();
+  String getUsername();
 
   /**
-   * Sets the value of the '{@link rcpmail.model.Server#getUserName <em>User Name</em>}' attribute.
+   * Sets the value of the '{@link rcpmail.model.Server#getUsername <em>Username</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>User Name</em>' attribute.
-   * @see #getUserName()
+   * @param value the new value of the '<em>Username</em>' attribute.
+   * @see #getUsername()
    * @generated
    */
-  void setUserName(String value);
+  void setUsername(String value);
 
   /**
    * Returns the value of the '<em><b>Password</b></em>' attribute.

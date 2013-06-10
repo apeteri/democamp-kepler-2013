@@ -37,8 +37,8 @@ import rcpmail.model.Server;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link rcpmail.model.impl.ServerImpl#getHostName <em>Host Name</em>}</li>
- *   <li>{@link rcpmail.model.impl.ServerImpl#getUserName <em>User Name</em>}</li>
+ *   <li>{@link rcpmail.model.impl.ServerImpl#getHostname <em>Hostname</em>}</li>
+ *   <li>{@link rcpmail.model.impl.ServerImpl#getUsername <em>Username</em>}</li>
  *   <li>{@link rcpmail.model.impl.ServerImpl#getPassword <em>Password</em>}</li>
  *   <li>{@link rcpmail.model.impl.ServerImpl#getPort <em>Port</em>}</li>
  *   <li>{@link rcpmail.model.impl.ServerImpl#getFolders <em>Folders</em>}</li>
@@ -50,44 +50,44 @@ import rcpmail.model.Server;
 public class ServerImpl extends MinimalEObjectImpl.Container implements Server
 {
   /**
-   * The default value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
+   * The default value of the '{@link #getHostname() <em>Hostname</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHostName()
+   * @see #getHostname()
    * @generated
    * @ordered
    */
-  protected static final String HOST_NAME_EDEFAULT = null;
+  protected static final String HOSTNAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getHostName() <em>Host Name</em>}' attribute.
+   * The cached value of the '{@link #getHostname() <em>Hostname</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getHostName()
+   * @see #getHostname()
    * @generated
    * @ordered
    */
-  protected String hostName = HOST_NAME_EDEFAULT;
+  protected String hostname = HOSTNAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getUserName() <em>User Name</em>}' attribute.
+   * The default value of the '{@link #getUsername() <em>Username</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getUserName()
+   * @see #getUsername()
    * @generated
    * @ordered
    */
-  protected static final String USER_NAME_EDEFAULT = null;
+  protected static final String USERNAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getUserName() <em>User Name</em>}' attribute.
+   * The cached value of the '{@link #getUsername() <em>Username</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getUserName()
+   * @see #getUsername()
    * @generated
    * @ordered
    */
-  protected String userName = USER_NAME_EDEFAULT;
+  protected String username = USERNAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
@@ -165,9 +165,9 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getHostName()
+  public String getHostname()
   {
-    return hostName;
+    return hostname;
   }
 
   /**
@@ -175,12 +175,12 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setHostName(String newHostName)
+  public void setHostname(String newHostname)
   {
-    String oldHostName = hostName;
-    hostName = newHostName;
+    String oldHostname = hostname;
+    hostname = newHostname;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER__HOST_NAME, oldHostName, hostName));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER__HOSTNAME, oldHostname, hostname));
   }
 
   /**
@@ -188,9 +188,9 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getUserName()
+  public String getUsername()
   {
-    return userName;
+    return username;
   }
 
   /**
@@ -198,12 +198,12 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUserName(String newUserName)
+  public void setUsername(String newUsername)
   {
-    String oldUserName = userName;
-    userName = newUserName;
+    String oldUsername = username;
+    username = newUsername;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER__USER_NAME, oldUserName, userName));
+      eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.SERVER__USERNAME, oldUsername, username));
   }
 
   /**
@@ -353,10 +353,10 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
   {
     switch (featureID)
     {
-      case ModelPackage.SERVER__HOST_NAME:
-        return getHostName();
-      case ModelPackage.SERVER__USER_NAME:
-        return getUserName();
+      case ModelPackage.SERVER__HOSTNAME:
+        return getHostname();
+      case ModelPackage.SERVER__USERNAME:
+        return getUsername();
       case ModelPackage.SERVER__PASSWORD:
         return getPassword();
       case ModelPackage.SERVER__PORT:
@@ -378,11 +378,11 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
   {
     switch (featureID)
     {
-      case ModelPackage.SERVER__HOST_NAME:
-        setHostName((String)newValue);
+      case ModelPackage.SERVER__HOSTNAME:
+        setHostname((String)newValue);
         return;
-      case ModelPackage.SERVER__USER_NAME:
-        setUserName((String)newValue);
+      case ModelPackage.SERVER__USERNAME:
+        setUsername((String)newValue);
         return;
       case ModelPackage.SERVER__PASSWORD:
         setPassword((String)newValue);
@@ -408,11 +408,11 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
   {
     switch (featureID)
     {
-      case ModelPackage.SERVER__HOST_NAME:
-        setHostName(HOST_NAME_EDEFAULT);
+      case ModelPackage.SERVER__HOSTNAME:
+        setHostname(HOSTNAME_EDEFAULT);
         return;
-      case ModelPackage.SERVER__USER_NAME:
-        setUserName(USER_NAME_EDEFAULT);
+      case ModelPackage.SERVER__USERNAME:
+        setUsername(USERNAME_EDEFAULT);
         return;
       case ModelPackage.SERVER__PASSWORD:
         setPassword(PASSWORD_EDEFAULT);
@@ -437,10 +437,10 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
   {
     switch (featureID)
     {
-      case ModelPackage.SERVER__HOST_NAME:
-        return HOST_NAME_EDEFAULT == null ? hostName != null : !HOST_NAME_EDEFAULT.equals(hostName);
-      case ModelPackage.SERVER__USER_NAME:
-        return USER_NAME_EDEFAULT == null ? userName != null : !USER_NAME_EDEFAULT.equals(userName);
+      case ModelPackage.SERVER__HOSTNAME:
+        return HOSTNAME_EDEFAULT == null ? hostname != null : !HOSTNAME_EDEFAULT.equals(hostname);
+      case ModelPackage.SERVER__USERNAME:
+        return USERNAME_EDEFAULT == null ? username != null : !USERNAME_EDEFAULT.equals(username);
       case ModelPackage.SERVER__PASSWORD:
         return PASSWORD_EDEFAULT == null ? password != null : !PASSWORD_EDEFAULT.equals(password);
       case ModelPackage.SERVER__PORT:
@@ -480,10 +480,10 @@ public class ServerImpl extends MinimalEObjectImpl.Container implements Server
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (hostName: ");
-    result.append(hostName);
-    result.append(", userName: ");
-    result.append(userName);
+    result.append(" (hostname: ");
+    result.append(hostname);
+    result.append(", username: ");
+    result.append(username);
     result.append(", password: ");
     result.append(password);
     result.append(", port: ");
