@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see rcpmail.model.ModelPackage#getServer()
- * @model
+ * @model superTypes="rcpmail.model.ModelObject"
  * @generated
  */
-public interface Server extends EObject
+public interface Server extends EObject, ModelObject
 {
   /**
    * Returns the value of the '<em><b>Hostname</b></em>' attribute.

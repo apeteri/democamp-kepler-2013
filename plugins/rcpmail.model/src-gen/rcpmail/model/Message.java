@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see rcpmail.model.ModelPackage#getMessage()
- * @model
+ * @model superTypes="rcpmail.model.ModelObject"
  * @generated
  */
-public interface Message extends EObject
+public interface Message extends EObject, ModelObject
 {
   /**
    * Returns the value of the '<em><b>Id</b></em>' attribute.

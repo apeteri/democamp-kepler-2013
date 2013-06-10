@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see rcpmail.model.ModelPackage#getFolder()
- * @model
+ * @model superTypes="rcpmail.model.ModelObject"
  * @generated
  */
-public interface Folder extends EObject
+public interface Folder extends EObject, ModelObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

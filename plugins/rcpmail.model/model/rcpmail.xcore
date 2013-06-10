@@ -1,12 +1,12 @@
 @GenModel(bundleManifest="false")
 package rcpmail.model
 
-interface ModelObject
+interface ModelObject wraps rcpmail.model.ModelObject
 {
 	// Marker interface for items which should be shown in the navigator
 }
 
-class Server
+class Server extends ModelObject
 {
 	String hostname
 	String username
@@ -26,7 +26,7 @@ class Server
 	} 
 }
 
-class Folder
+class Folder extends ModelObject
 {
 	String name
 	
@@ -40,7 +40,7 @@ class Folder
 	}
 }
 
-class Message
+class Message extends ModelObject
 {
 	int ^id
 	String subject

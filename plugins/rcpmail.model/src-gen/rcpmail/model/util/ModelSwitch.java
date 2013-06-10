@@ -72,17 +72,11 @@ public class ModelSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case ModelPackage.MODEL_OBJECT:
-      {
-        ModelObject modelObject = (ModelObject)theEObject;
-        T result = caseModelObject(modelObject);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ModelPackage.SERVER:
       {
         Server server = (Server)theEObject;
         T result = caseServer(server);
+        if (result == null) result = caseModelObject(server);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -90,6 +84,7 @@ public class ModelSwitch<T> extends Switch<T>
       {
         Folder folder = (Folder)theEObject;
         T result = caseFolder(folder);
+        if (result == null) result = caseModelObject(folder);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -97,6 +92,7 @@ public class ModelSwitch<T> extends Switch<T>
       {
         Message message = (Message)theEObject;
         T result = caseMessage(message);
+        if (result == null) result = caseModelObject(message);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

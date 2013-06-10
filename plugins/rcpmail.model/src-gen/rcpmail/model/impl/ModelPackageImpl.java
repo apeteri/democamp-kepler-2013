@@ -429,9 +429,12 @@ public class ModelPackageImpl extends EPackageImpl implements ModelPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    serverEClass.getESuperTypes().add(this.getModelObject());
+    folderEClass.getESuperTypes().add(this.getModelObject());
+    messageEClass.getESuperTypes().add(this.getModelObject());
 
     // Initialize classes, features, and operations; add parameters
-    initEClass(modelObjectEClass, ModelObject.class, "ModelObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(modelObjectEClass, ModelObject.class, "ModelObject", IS_ABSTRACT, IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(serverEClass, Server.class, "Server", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getServer_Hostname(), theEcorePackage.getEString(), "hostname", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

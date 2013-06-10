@@ -104,7 +104,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER__HOSTNAME = 0;
+  int SERVER__HOSTNAME = MODEL_OBJECT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Username</b></em>' attribute.
@@ -113,7 +113,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER__USERNAME = 1;
+  int SERVER__USERNAME = MODEL_OBJECT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Password</b></em>' attribute.
@@ -122,7 +122,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER__PASSWORD = 2;
+  int SERVER__PASSWORD = MODEL_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Port</b></em>' attribute.
@@ -131,7 +131,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER__PORT = 3;
+  int SERVER__PORT = MODEL_OBJECT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Folders</b></em>' containment reference list.
@@ -140,7 +140,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER__FOLDERS = 4;
+  int SERVER__FOLDERS = MODEL_OBJECT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Server</em>' class.
@@ -149,7 +149,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER_FEATURE_COUNT = 5;
+  int SERVER_FEATURE_COUNT = MODEL_OBJECT_FEATURE_COUNT + 5;
 
   /**
    * The operation id for the '<em>Get Default Selection</em>' operation.
@@ -158,7 +158,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER___GET_DEFAULT_SELECTION = 0;
+  int SERVER___GET_DEFAULT_SELECTION = MODEL_OBJECT_OPERATION_COUNT + 0;
 
   /**
    * The operation id for the '<em>Get Junk Folder</em>' operation.
@@ -167,7 +167,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER___GET_JUNK_FOLDER = 1;
+  int SERVER___GET_JUNK_FOLDER = MODEL_OBJECT_OPERATION_COUNT + 1;
 
   /**
    * The number of operations of the '<em>Server</em>' class.
@@ -176,7 +176,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SERVER_OPERATION_COUNT = 2;
+  int SERVER_OPERATION_COUNT = MODEL_OBJECT_OPERATION_COUNT + 2;
 
   /**
    * The meta object id for the '{@link rcpmail.model.impl.FolderImpl <em>Folder</em>}' class.
@@ -195,7 +195,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER__NAME = 0;
+  int FOLDER__NAME = MODEL_OBJECT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Server</b></em>' container reference.
@@ -204,7 +204,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER__SERVER = 1;
+  int FOLDER__SERVER = MODEL_OBJECT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Messages</b></em>' containment reference list.
@@ -213,7 +213,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER__MESSAGES = 2;
+  int FOLDER__MESSAGES = MODEL_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Message Count</b></em>' attribute.
@@ -222,7 +222,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER__MESSAGE_COUNT = 3;
+  int FOLDER__MESSAGE_COUNT = MODEL_OBJECT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Folder</em>' class.
@@ -231,7 +231,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER_FEATURE_COUNT = 4;
+  int FOLDER_FEATURE_COUNT = MODEL_OBJECT_FEATURE_COUNT + 4;
 
   /**
    * The number of operations of the '<em>Folder</em>' class.
@@ -240,7 +240,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FOLDER_OPERATION_COUNT = 0;
+  int FOLDER_OPERATION_COUNT = MODEL_OBJECT_OPERATION_COUNT + 0;
 
   /**
    * The meta object id for the '{@link rcpmail.model.impl.MessageImpl <em>Message</em>}' class.
@@ -259,7 +259,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__ID = 0;
+  int MESSAGE__ID = MODEL_OBJECT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Subject</b></em>' attribute.
@@ -268,7 +268,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__SUBJECT = 1;
+  int MESSAGE__SUBJECT = MODEL_OBJECT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>From</b></em>' attribute.
@@ -277,7 +277,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__FROM = 2;
+  int MESSAGE__FROM = MODEL_OBJECT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -286,7 +286,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__DATE = 3;
+  int MESSAGE__DATE = MODEL_OBJECT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Spam</b></em>' attribute.
@@ -295,7 +295,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__SPAM = 4;
+  int MESSAGE__SPAM = MODEL_OBJECT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' attribute.
@@ -304,7 +304,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__BODY = 5;
+  int MESSAGE__BODY = MODEL_OBJECT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Folder</b></em>' container reference.
@@ -313,7 +313,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE__FOLDER = 6;
+  int MESSAGE__FOLDER = MODEL_OBJECT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Message</em>' class.
@@ -322,7 +322,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_FEATURE_COUNT = 7;
+  int MESSAGE_FEATURE_COUNT = MODEL_OBJECT_FEATURE_COUNT + 7;
 
   /**
    * The number of operations of the '<em>Message</em>' class.
@@ -331,7 +331,7 @@ public interface ModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MESSAGE_OPERATION_COUNT = 0;
+  int MESSAGE_OPERATION_COUNT = MODEL_OBJECT_OPERATION_COUNT + 0;
 
 
   /**
@@ -340,6 +340,7 @@ public interface ModelPackage extends EPackage
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Object</em>'.
    * @see rcpmail.model.ModelObject
+   * @model instanceClass="rcpmail.model.ModelObject"
    * @generated
    */
   EClass getModelObject();
