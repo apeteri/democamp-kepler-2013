@@ -118,7 +118,7 @@ public class MessageView extends ViewPart implements ISelectionListener {
 						2, 1));
 		
 		// message contents is a field so that it can be referenced from setFocus()
-		bodyText = new Text(messageComposite, SWT.MULTI | SWT.WRAP);
+		bodyText = new Text(messageComposite, SWT.MULTI | SWT.WRAP | SWT.V_SCROLL);
 		bodyText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 		ISelectionService selectionService = (ISelectionService) getSite()
 				.getService(ISelectionService.class);
