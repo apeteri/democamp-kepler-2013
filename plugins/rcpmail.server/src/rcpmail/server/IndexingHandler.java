@@ -79,6 +79,11 @@ public class IndexingHandler extends ObjectWriteAccessHandler
 
   private void registerDeleteDataEvents(String version, Map<CDOID, EClass> detachedObjectTypes)
   {
+    if (null == detachedObjectTypes)
+    {
+      return;
+    }
+
     for (Entry<CDOID, EClass> detachedObjectEntry : detachedObjectTypes.entrySet())
     {
       if (detachedObjectEntry.getValue() == ModelPackage.Literals.MESSAGE)

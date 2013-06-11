@@ -37,7 +37,6 @@ public class IndexingAppExtension implements IAppExtension
     File indexDirectory = new File("indexes");
     ZoieIndexableInterpreter<Message> interpreter = new MessageIndexableInterpreter();
     zoieSystem = ZoieSystem.buildDefaultInstance(indexDirectory, interpreter, new ZoieConfig());
-
     zoieSystem.start();
 
     OM.LOG.info("IndexingAppExtension started");
@@ -49,7 +48,7 @@ public class IndexingAppExtension implements IAppExtension
   {
     if (null != zoieSystem)
     {
-      zoieSystem.stop();
+      zoieSystem.shutdown();
       zoieSystem = null;
     }
 
