@@ -38,7 +38,7 @@ import org.eclipse.net4j.util.lifecycle.Lifecycle;
  * @author Eike Stepper
  * @author András Péteri
  */
-public class ModelManager extends Lifecycle {
+public class ModelManager extends Lifecycle implements ModelObject {
 
 	public static final ModelManager INSTANCE = new ModelManager();
 
