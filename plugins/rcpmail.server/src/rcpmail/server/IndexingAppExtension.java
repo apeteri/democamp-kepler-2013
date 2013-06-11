@@ -14,11 +14,12 @@ public class IndexingAppExtension implements IAppExtension
   {
     // Run the post-processor on the existing repository instance as well
     IPluginContainer.INSTANCE.addPostProcessor(new IndexingPostProcessor(), true);
+    OM.LOG.info("IndexingAppExtension started");
   }
 
   @Override
   public void stop() throws Exception
   {
-    // No-op
+    OM.LOG.info("IndexingAppExtension stopped");
   }
 }
