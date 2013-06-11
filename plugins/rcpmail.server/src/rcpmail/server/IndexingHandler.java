@@ -18,7 +18,6 @@ import rcpmail.model.ModelFactory;
 import rcpmail.model.ModelPackage;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -52,7 +51,7 @@ public class IndexingHandler extends ObjectWriteAccessHandler
       async = monitor.forkAsync();
 
       getDataEvents().clear();
-      String version = new Date(getCommitContext().getBranchPoint().getTimeStamp()).toString();
+      String version = Long.toString(getCommitContext().getBranchPoint().getTimeStamp());
       registerDataEvents(version, getNewObjects());
       registerDataEvents(version, getDirtyObjects());
       registerDeleteDataEvents(version, getCommitContext().getDetachedObjectTypes());
