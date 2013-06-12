@@ -1,5 +1,14 @@
 package rcpmail.handlers;
 
+import static org.apache.commons.lang.StringUtils.left;
+import static org.apache.commons.lang.StringUtils.lowerCase;
+import static org.apache.commons.lang.StringUtils.replace;
+
+import java.util.Date;
+import java.util.Random;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -10,14 +19,17 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
+import rcpmail.model.ModelFactory;
+import rcpmail.model.ModelManager;
 
 public class SyncWithServerHandler extends AbstractHandler implements IHandler {
 
+	private static int globalId = 0;
+	
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection currentSelection = HandlerUtil.getCurrentSelection(event);
 		if (currentSelection instanceof IStructuredSelection) {
@@ -27,28 +39,36 @@ public class SyncWithServerHandler extends AbstractHandler implements IHandler {
 				final Folder folder = (Folder) selected;
 				Job syncJob = new Job("Synchronize") {
 					protected IStatus run(IProgressMonitor monitor) {
-						monitor.beginTask(getName(), 3);
-						for (int i = 0; i < 3; i++) {
+						final Random rnd = new Random();
+						int messagesToGenerate = rnd.nextInt(20) + 10;
+						monitor.beginTask(getName(), messagesToGenerate);
+						
+						for (int i = 0; i < messagesToGenerate; i++) {
 							try {
 								Thread.sleep(400);
 							} catch (InterruptedException e) {
 								Thread.currentThread().interrupt();
 							}
-							// Note: our model is not thread safe. We are using
-							// Display.asyncExec to make sure that the model
-							// is only accessed and changed from the UI thread.
-							// Using asyncExec ensures that deadlocks cannot
-							// happen. (In the current code, there is no deadlock
-							// potential because this job does not hold any locks,
-							// but that may change in the future.)
 							
-							// TODO: add functionality for demo here
-
-//							Display.getDefault().asyncExec(new Runnable() {
-//								public void run() {
-//									folder.addMessage(Message.createExample(-1));
-//								}
-//							});
+							Message message = ModelFactory.eINSTANCE.createMessage();
+							
+							message.setId(++globalId);
+							message.setDate(new Date().toString());
+							message.setSpam(rnd.nextBoolean());
+							
+							String from = ModelManager.INSTANCE.getLine();
+							String subject = ModelManager.INSTANCE.getLine();
+							
+							message.setFrom("\"" 
+									+ WordUtils.capitalize(left(from, 15)) 
+									+ "\" <" 
+									+ lowerCase(replace(left(from, 7), " ", "")) 
+									+ "@nosuchmail.org>");
+							
+							message.setSubject(StringUtils.capitalize(left(subject, 60)) + "...");
+							message.setBody(ModelManager.INSTANCE.getLines(5));
+							
+							ModelManager.INSTANCE.addMessage(folder, message);
 							monitor.worked(1);
 						}
 						monitor.done();
@@ -60,5 +80,4 @@ public class SyncWithServerHandler extends AbstractHandler implements IHandler {
 		}
 		return null;
 	}
-
 }

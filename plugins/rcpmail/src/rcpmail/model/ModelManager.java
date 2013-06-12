@@ -14,8 +14,11 @@
  */
 package rcpmail.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.eresource.CDOResource;
@@ -25,6 +28,7 @@ import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.view.CDOAdapterPolicy;
+import org.eclipse.emf.cdo.view.CDOQuery;
 import org.eclipse.emf.cdo.view.CDOView;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -47,6 +51,8 @@ public class ModelManager extends Lifecycle implements ModelObject {
 	private CDOView view;
 
 	private CDOResource serverResource;
+
+	private Scanner scanner;
 
 	public void addServer(final Server server) {
 		modify(serverResource, new ITransactionalOperation<CDOResource>() {
@@ -103,6 +109,16 @@ public class ModelManager extends Lifecycle implements ModelObject {
 				if (current != junk) {
 					junk.getMessages().add(object);
 				}
+				return object;
+			}
+		});
+	}
+
+	public void addMessage(final Folder folder, final Message message) {
+		modify(folder, new ITransactionalOperation<Folder>() {
+			@Override
+			public Folder execute(Folder object) {
+				object.getMessages().add(message);
 				return object;
 			}
 		});
@@ -238,6 +254,42 @@ public class ModelManager extends Lifecycle implements ModelObject {
 			transaction.close();
 		}
 	}
+	
+	public String getLine() {
+		return getLines(1);
+	}
+	
+	public String getLines(int numLines) {
+		StringBuilder builder = new StringBuilder();
+		
+		for (int i = 0; i < numLines; i++) {
+			String line = "";
+			
+			while (true) {
+				while (scanner.hasNextLine() && line.isEmpty()) {
+					line = scanner.nextLine();
+				}
+				
+				if (!line.isEmpty()) {
+					builder.append(line);
+					break;
+				} else {
+					scanner.close();
+					try {
+						initScanner();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+			if (i > 0) {
+				builder.append(" ");
+			}
+		}
+		
+		return builder.toString();
+	}
 
 	@Override
 	protected void doActivate() throws Exception {
@@ -254,13 +306,27 @@ public class ModelManager extends Lifecycle implements ModelObject {
 		session = config.openNet4jSession();
 		view = session.openView();
 		view.options().addChangeSubscriptionPolicy(CDOAdapterPolicy.ALL);
+		
+		initScanner();
+	}
+
+	private void initScanner() throws FileNotFoundException {
+		scanner = new Scanner(new File("C:/Temp/messages.txt"));
 	}
 
 	@Override
 	protected void doDeactivate() throws Exception {
+		scanner.close();
+		scanner = null;
 		session.close();
 		session = null;
 		view = null;
 		super.doDeactivate();
+	}
+
+	public List<Message> query(String queryString) {
+		CDOQuery query = view.createQuery("lucene", queryString);
+		query.setMaxResults(5);
+		return query.getResult(Message.class);
 	}
 }
