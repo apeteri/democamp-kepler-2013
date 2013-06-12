@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Eike Stepper - initial API and implementation
+ *    András Péteri - adapted to Kepler DemoCamp demo
  */
 package rcpmail.server;
 

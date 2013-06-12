@@ -6,3 +6,4 @@ http://www.eclipse.org/legal/epl-v10.html
 
 Contributors:
    Eike Stepper - initial API and implementation
+   András Péteri - adapted to Kepler DemoCamp demo
