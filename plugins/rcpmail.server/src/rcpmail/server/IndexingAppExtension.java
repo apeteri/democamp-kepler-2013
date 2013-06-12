@@ -6,6 +6,7 @@ import org.eclipse.emf.cdo.spi.server.IAppExtension;
 
 import org.eclipse.net4j.util.container.IPluginContainer;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.MultiReader;
 import org.apache.lucene.search.IndexSearcher;
@@ -21,7 +22,6 @@ import proj.zoie.api.ZoieIndexReader.SubReaderInfo;
 import proj.zoie.api.indexing.ZoieIndexableInterpreter;
 import proj.zoie.impl.indexing.ZoieConfig;
 import proj.zoie.impl.indexing.ZoieSystem;
-import rcpmail.model.Message;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class IndexingAppExtension implements IAppExtension
     return instance;
   }
 
-  private ZoieSystem<IndexReader, Message> zoieSystem;
+  private ZoieSystem<IndexReader, MessageEvent> zoieSystem;
 
   @Override
   public void start(File configFile) throws Exception
@@ -44,9 +44,11 @@ public class IndexingAppExtension implements IAppExtension
     // Add post-processor, run it on existing repository instance(s) as well
     IPluginContainer.INSTANCE.addPostProcessor(new IndexingPostProcessor(), true);
 
+    BasicConfigurator.configure();
+
     // Initialize indexing subsystem
     File indexDirectory = new File("indexes");
-    ZoieIndexableInterpreter<Message> interpreter = new MessageIndexableInterpreter();
+    ZoieIndexableInterpreter<MessageEvent> interpreter = new MessageEventIndexableInterpreter();
     zoieSystem = ZoieSystem.buildDefaultInstance(indexDirectory, interpreter, new ZoieConfig());
     zoieSystem.start();
 
@@ -59,7 +61,7 @@ public class IndexingAppExtension implements IAppExtension
   {
     if (null != zoieSystem)
     {
-      zoieSystem.shutdown();
+      zoieSystem.stop();
       zoieSystem = null;
     }
 
@@ -67,7 +69,7 @@ public class IndexingAppExtension implements IAppExtension
     OM.LOG.info("IndexingAppExtension stopped");
   }
 
-  public void consume(List<DataEvent<Message>> dataEvents) throws ZoieException
+  public void consume(List<DataEvent<MessageEvent>> dataEvents) throws ZoieException
   {
     zoieSystem.consume(dataEvents);
   }
@@ -78,18 +80,21 @@ public class IndexingAppExtension implements IAppExtension
     SubReaderAccessor<ZoieIndexReader<IndexReader>> subReaderAccessor = ZoieIndexReader
         .getSubReaderAccessor(readerList);
     MultiReader reader = new MultiReader(readerList.toArray(new IndexReader[readerList.size()]), false);
-    IndexSearcher searcher = new IndexSearcher(reader);
-    TopDocs topDocs = searcher.search(query, maxResults);
-    ScoreDoc[] scoreDocs = topDocs.scoreDocs;
 
-    for (ScoreDoc scoreDoc : scoreDocs)
+    try (IndexSearcher searcher = new IndexSearcher(reader))
     {
-      int documentId = scoreDoc.doc;
-      SubReaderInfo<ZoieIndexReader<IndexReader>> subReaderInfo = subReaderAccessor.getSubReaderInfo(documentId);
-      long cdoId = ((ZoieIndexReader<IndexReader>)subReaderInfo.subreader.getInnerReader()).getUID(documentId);
-      if (cdoId != ZoieIndexReader.DELETED_UID)
+      TopDocs topDocs = searcher.search(query, maxResults);
+      ScoreDoc[] scoreDocs = topDocs.scoreDocs;
+
+      for (ScoreDoc scoreDoc : scoreDocs)
       {
-        context.addResult(CDOIDUtil.createLong(cdoId));
+        int documentId = scoreDoc.doc;
+        SubReaderInfo<ZoieIndexReader<IndexReader>> subReaderInfo = subReaderAccessor.getSubReaderInfo(documentId);
+        long cdoId = subReaderInfo.subreader.getUID(documentId);
+        if (cdoId != ZoieIndexReader.DELETED_UID)
+        {
+          context.addResult(CDOIDUtil.createLong(cdoId));
+        }
       }
     }
 

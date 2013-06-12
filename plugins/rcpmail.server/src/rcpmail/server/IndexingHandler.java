@@ -26,9 +26,9 @@ public class IndexingHandler extends ObjectWriteAccessHandler
 {
   public static final IndexingHandler INSTANCE = new IndexingHandler();
 
-  private List<DataEvent<Message>> dataEvents;
+  private List<DataEvent<MessageEvent>> dataEvents;
 
-  private List<DataEvent<Message>> getDataEvents()
+  private List<DataEvent<MessageEvent>> getDataEvents()
   {
     if (null == dataEvents)
     {
@@ -42,6 +42,12 @@ public class IndexingHandler extends ObjectWriteAccessHandler
   protected void handleTransactionBeforeCommitting(OMMonitor monitor) throws RuntimeException
   {
     OM.LOG.info("*** handleTransactionBeforeCommitting called");
+  }
+
+  @Override
+  protected void handleTransactionAfterCommitted(OMMonitor monitor)
+  {
+    OM.LOG.info("*** handleTransactionAfterCommitted called");
 
     monitor.begin();
     Async async = null;
@@ -55,6 +61,16 @@ public class IndexingHandler extends ObjectWriteAccessHandler
       registerDataEvents(version, getNewObjects());
       registerDataEvents(version, getDirtyObjects());
       registerDeleteDataEvents(version, getCommitContext().getDetachedObjectTypes());
+
+      try
+      {
+        IndexingAppExtension.getInstance().consume(getDataEvents());
+      }
+      catch (ZoieException ex)
+      {
+        // Uh-oh
+        ex.printStackTrace();
+      }
     }
     finally
     {
@@ -71,7 +87,7 @@ public class IndexingHandler extends ObjectWriteAccessHandler
     {
       if (eObject.eClass() == ModelPackage.Literals.MESSAGE)
       {
-        getDataEvents().add(new DataEvent<Message>((Message)eObject, version));
+        getDataEvents().add(new DataEvent<>(new MessageEvent((Message)eObject), version));
       }
     }
   }
@@ -90,38 +106,7 @@ public class IndexingHandler extends ObjectWriteAccessHandler
         Message detachedMessage = ModelFactory.eINSTANCE.createMessage();
         ((InternalCDOObject)detachedMessage).cdoInternalSetID(detachedObjectEntry.getKey());
         ((InternalCDOObject)detachedMessage).cdoInternalSetState(CDOState.TRANSIENT);
-        getDataEvents().add(new DataEvent<Message>(detachedMessage, version));
-      }
-    }
-  }
-
-  @Override
-  protected void handleTransactionAfterCommitted(OMMonitor monitor)
-  {
-    OM.LOG.info("*** handleTransactionAfterCommitted called");
-
-    monitor.begin();
-    Async async = null;
-
-    try
-    {
-      async = monitor.forkAsync();
-
-      try
-      {
-        IndexingAppExtension.getInstance().consume(getDataEvents());
-      }
-      catch (ZoieException ex)
-      {
-        // Uh-oh
-        ex.printStackTrace();
-      }
-    }
-    finally
-    {
-      if (null != async)
-      {
-        async.stop();
+        getDataEvents().add(new DataEvent<>(new MessageEvent(detachedMessage), version));
       }
     }
   }

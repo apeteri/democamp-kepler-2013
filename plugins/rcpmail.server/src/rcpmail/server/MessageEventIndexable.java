@@ -1,35 +1,31 @@
 package rcpmail.server;
 
-import org.eclipse.emf.cdo.CDOState;
-import org.eclipse.emf.cdo.common.id.CDOIDUtil;
-
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.Field.Index;
 import org.apache.lucene.document.Field.Store;
 
 import proj.zoie.api.indexing.ZoieIndexable;
-import rcpmail.model.Message;
 
-public class MessageIndexable implements ZoieIndexable
+public class MessageEventIndexable implements ZoieIndexable
 {
-  private Message message;
+  private MessageEvent event;
 
-  public MessageIndexable(Message message)
+  public MessageEventIndexable(MessageEvent event)
   {
-    this.message = message;
+    this.event = event;
   }
 
   @Override
   public long getUID()
   {
-    return CDOIDUtil.getLong(message.cdoID());
+    return event.getUid();
   }
 
   @Override
   public boolean isDeleted()
   {
-    return message.cdoState() == CDOState.TRANSIENT;
+    return event.isDeleted();
   }
 
   @Override
@@ -42,9 +38,10 @@ public class MessageIndexable implements ZoieIndexable
   public IndexingReq[] buildIndexingReqs()
   {
     Document doc = new Document();
-    doc.add(new Field("from", message.getFrom(), Store.NO, Index.ANALYZED));
-    doc.add(new Field("subject", message.getSubject(), Store.NO, Index.ANALYZED));
-    doc.add(new Field("body", message.getBody(), Store.NO, Index.ANALYZED));
+
+    doc.add(new Field("from", event.getFrom(), Store.NO, Index.ANALYZED));
+    doc.add(new Field("subject", event.getSubject(), Store.NO, Index.ANALYZED));
+    doc.add(new Field("body", event.getBody(), Store.NO, Index.ANALYZED));
 
     return new IndexingReq[] { new IndexingReq(doc) };
   }
