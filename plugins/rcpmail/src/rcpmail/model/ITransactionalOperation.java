@@ -7,7 +7,6 @@
  *
  * Contributors:
  *    Eike Stepper - initial API and implementation
- *    András Péteri - adapted to DemoCamp demo
  *    
  *  Initial Publication:
  *    Eclipse Magazin - http://www.eclipse-magazin.de
