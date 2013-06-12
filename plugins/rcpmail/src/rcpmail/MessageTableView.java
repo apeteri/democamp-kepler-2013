@@ -1,7 +1,12 @@
 package rcpmail;
 
+import java.util.List;
+
 import org.eclipse.core.databinding.observable.list.IObservableList;
+import org.eclipse.core.databinding.observable.list.WritableList;
 import org.eclipse.core.databinding.observable.masterdetail.MasterDetailObservables;
+import org.eclipse.core.databinding.observable.value.IValueChangeListener;
+import org.eclipse.core.databinding.observable.value.ValueChangeEvent;
 import org.eclipse.core.databinding.observable.value.WritableValue;
 import org.eclipse.core.databinding.property.Properties;
 import org.eclipse.emf.common.util.EList;
@@ -11,8 +16,11 @@ import org.eclipse.jface.action.GroupMarker;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.databinding.swt.ISWTObservableValue;
+import org.eclipse.jface.databinding.swt.SWTObservables;
 import org.eclipse.jface.databinding.viewers.ObservableListContentProvider;
 import org.eclipse.jface.databinding.viewers.ObservableMapCellLabelProvider;
+import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.resource.LocalResourceManager;
@@ -26,10 +34,11 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchActionConstants;
@@ -39,6 +48,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import rcpmail.model.Folder;
 import rcpmail.model.Message;
+import rcpmail.model.ModelManager;
 import rcpmail.model.ModelPackage;
 
 public class MessageTableView extends ViewPart implements ISelectionListener {
@@ -60,8 +70,11 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 	 */
 	public void createPartControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NONE);
-		container.setLayout(new FillLayout());
+		container.setLayout(new GridLayout(1, false));
 
+		Text searchField = new Text(container, SWT.BORDER);
+		searchField.setLayoutData(GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).grab(true, false).create());
+		
 		tableViewer = new TableViewer(container, SWT.FULL_SELECTION
 				| SWT.MULTI | SWT.BORDER) {
 			// The following is a workaround for bug 269264.
@@ -84,6 +97,7 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 			}
 		};
 		table = tableViewer.getTable();
+		table.setLayoutData(GridDataFactory.fillDefaults().grab(true, true).create());
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 
@@ -103,13 +117,31 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 		initializeMenu();
 		initializeContextMenu();
 
-		IObservableList messagesOfSelectedFolder = MasterDetailObservables.detailList(
+		final IObservableList messagesOfSelectedFolder = MasterDetailObservables.detailList(
 				selectedFolder, 
 				EMFProperties
 						.list(ModelPackage.Literals.FOLDER__MESSAGES)
 						.listFactory(), 
 				null);
 		
+		ISWTObservableValue searchText = SWTObservables.observeText(searchField, SWT.Modify);
+		ISWTObservableValue delayedText = SWTObservables.observeDelayedValue(500, searchText);
+		delayedText.addValueChangeListener(new IValueChangeListener() {
+			@Override
+			public void handleValueChange(ValueChangeEvent event) {
+				if (((String) event.diff.getNewValue()).isEmpty()) {
+					tableViewer.setInput(messagesOfSelectedFolder);
+					tableViewer.refresh();
+					updateSelection(messagesOfSelectedFolder);
+				} else {
+					WritableList searchResults = new WritableList(ModelManager.INSTANCE.query((String) event.diff.getNewValue()), Message.class);
+					tableViewer.setInput(searchResults);
+					tableViewer.refresh();
+					updateSelection(searchResults);
+				}
+			}
+		});
+
 		gray = resourceManager.createColor(new RGB(100, 100, 100));
 		italics = resourceManager.createFont(FontDescriptor.createFrom(
 				JFaceResources.getDialogFont()).setStyle(SWT.ITALIC));
@@ -189,10 +221,14 @@ public class MessageTableView extends ViewPart implements ISelectionListener {
 				Folder folder = (Folder) element;
 				selectedFolder.setValue(folder);
 				EList<Message> messages = folder.getMessages();
-				if (messages.size() > 0) {
-					tableViewer.setSelection(new StructuredSelection(messages.get(0)));
-				}
+				updateSelection(messages);
 			}
+		}
+	}
+
+	private void updateSelection(List<?> messages) {
+		if (messages.size() > 0) {
+			tableViewer.setSelection(new StructuredSelection(messages.get(0)));
 		}
 	}
 	

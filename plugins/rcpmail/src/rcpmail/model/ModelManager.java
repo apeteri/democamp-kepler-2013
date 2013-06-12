@@ -16,6 +16,7 @@ package rcpmail.model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -34,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.net4j.Net4jUtil;
 import org.eclipse.net4j.connector.IConnector;
+import org.eclipse.net4j.signal.RemoteException;
 import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
@@ -327,6 +329,11 @@ public class ModelManager extends Lifecycle implements ModelObject {
 	public List<Message> query(String queryString) {
 		CDOQuery query = view.createQuery("lucene", queryString);
 		query.setMaxResults(5);
-		return query.getResult(Message.class);
+		
+		try {
+			return query.getResult(Message.class);
+		} catch (RemoteException e) {
+			return Collections.emptyList();
+		}
 	}
 }
