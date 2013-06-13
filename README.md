@@ -1,7 +1,7 @@
 democamp-kepler-2013
 ====================
 
-Source code for DemoCamp Budapest (Kepler 2013 edition)
+Source code for the presentation at DemoCamp Budapest (Kepler 2013 edition)
 
 Additional links:
 
